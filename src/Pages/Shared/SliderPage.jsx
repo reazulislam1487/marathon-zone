@@ -2,7 +2,9 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router";
 const SliderPage = () => {
+  const navigate = useNavigate();
   const settings = {
     dots: true,
     infinite: true,
@@ -13,31 +15,32 @@ const SliderPage = () => {
     autoplaySpeed: 4000,
     cssEase: "ease-in-out",
   };
-
   const slides = [
     {
-      img: "https://www.southernliving.com/thmb/110u4_Q7R-1Y8Juz6bX-RPPNer0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/2119102_garla039-e59dd588deba4301a43515fcd0c213d3.jpg",
-      heading: "Welcome to Your Green Home",
+      img: "https://i.ibb.co/YBmvcC3n/Runners-sutadimages.jpg",
+      heading: "Welcome to Marathon Pulse",
       subheading:
-        "Discover smart tips and tools to grow a greener lifestyle—from your doorstep!",
+        "Track races, join global events, and run towards a healthier, stronger you.",
       buttonText: "Get Started",
     },
     {
-      img: "https://images.squarespace-cdn.com/content/v1/5dea42a80d60bb6675fdb54c/1619182116698-VM8JQZATNHI2DWZB2RYY/alaster-anderson-garden-design-planting-installation-garden-lighting.jpg?format=2500w",
-      heading: "Join Our Growing Community",
+      img: "https://i.ibb.co/nMvMyyS0/Runner.jpg",
+      heading: "Join the Runners' Community",
       subheading:
-        "Share your garden journey, get tips from others, and grow together with like-minded people.",
+        "Connect with fellow runners, share your journey, and find your pace in a global movement.",
       buttonText: "Join Now",
     },
     {
-      img: "https://static.vecteezy.com/system/resources/previews/038/345/095/non_2x/ai-generated-blurry-garden-house-scene-behind-an-empty-wooden-surface-setting-the-stage-for-product-displays-photo.jpeg",
-      heading: "Easy Gardening Tips & Tools",
+      img: "https://i.ibb.co/rfQSJ46s/London-Marathon-Alan-Kean.jpg",
+      heading: "Upcoming Marathons & Events",
       subheading:
-        "Explore seasonal tips and tools to make gardening joyful and simple.",
-      buttonText: "Learn More",
+        "Stay updated with upcoming races, training tips, and personalized challenges.",
+      buttonText: "Explore Events",
     },
   ];
-
+  const handleNavigate = () => {
+    navigate("/marathons");
+  };
   return (
     <Slider className="mb-20 overflow-hidden " {...settings}>
       {slides.map((slide, index) => (
@@ -56,7 +59,10 @@ const SliderPage = () => {
                 <p className="text-lg md:text-xl drop-shadow-sm">
                   {slide.subheading}
                 </p>
-                <button className="bg-green-500 hover:bg-green-600 text-white py-3 px-8 rounded-full transition shadow-lg hover:shadow-xl hover:scale-105 duration-300">
+                <button
+                  onClick={handleNavigate}
+                  className="bg-green-500 hover:bg-green-600 text-white py-3 px-8 rounded-full transition shadow-lg hover:shadow-xl hover:scale-105 duration-300"
+                >
                   {slide.buttonText}
                 </button>
               </div>

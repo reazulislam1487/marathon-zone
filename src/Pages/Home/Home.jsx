@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import SliderPage from "../Shared/SliderPage";
 import MarathonEvents from "./Marathonevents";
 import MarathonsSection from "./MarathonsSection";
+import WhyJoinSection from "./WhyJoinSection";
 const Home = () => {
   return (
     <div>
@@ -11,7 +12,9 @@ const Home = () => {
       <div className="max-w-screen-xl mx-auto">
         <Banner></Banner>
         <MarathonsSection></MarathonsSection>
+
         <MarathonEvents></MarathonEvents>
+        <WhyJoinSection></WhyJoinSection>
       </div>
     </div>
   );

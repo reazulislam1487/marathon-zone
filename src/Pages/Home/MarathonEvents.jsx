@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRunning } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const marathonEvents = [
   {
@@ -52,25 +53,48 @@ const marathonEvents = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
+
 const MarathonEvents = () => {
   return (
-    <section className="py-12 px-4 md:px-12 bg-gradient-to-b from-green-50 to-white">
-      {/* Title with Logo */}
-      <div className="flex items-center justify-center mb-12 gap-3">
-        <FaRunning className="text-green-700 text-4xl animate-bounce" />
-        <h2 className="text-4xl font-bold text-green-700 text-center">
-          Upcoming Marathon Events
-        </h2>
+    <section className="py-20 px-4 md:px-12  text-gray-800">
+      {/* Section Title */}
+      <div className="flex items-center justify-center mb-14 gap-4">
+        <FaRunning className="text-blue-600 text-4xl animate-pulse" />
+        <motion.h2
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-extrabold text-black text-center"
+        >
+          Upcoming <span className="text-blue-600">Marathon Events</span>
+        </motion.h2>
       </div>
 
-      {/* Event Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {marathonEvents.map((event) => (
-          <div
+      {/* Event Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        {marathonEvents.map((event, index) => (
+          <motion.div
             key={event.id}
-            className="bg-white rounded-2xl shadow-md hover:shadow-2xl border border-green-100 hover:border-green-300 transition duration-300 p-6 group transform hover:-translate-y-1 hover:scale-[1.02]"
+            className="group p-6 bg-white border rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={index}
+            variants={cardVariants}
           >
-            <h3 className="text-2xl font-semibold text-green-600 group-hover:text-green-800 transition mb-2">
+            <h3 className="text-2xl font-semibold text-blue-700 group-hover:text-blue-900 mb-3">
               {event.name}
             </h3>
             <p className="text-gray-600 mb-1">
@@ -81,14 +105,14 @@ const MarathonEvents = () => {
             </p>
             <p className="text-gray-600 mb-1">
               <strong>Distance:</strong>{" "}
-              <span className="bg-green-100 text-green-700 px-2 py-1 rounded-md text-sm font-medium">
+              <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-md text-sm font-medium">
                 {event.distance}
               </span>
             </p>
             <p className="text-gray-600">
               <strong>Register by:</strong> {event.registrationDeadline}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
