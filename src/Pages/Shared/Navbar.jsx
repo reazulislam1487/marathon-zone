@@ -204,7 +204,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="navbar  bg-white shadow-md p-0 pr-2 md:px-6 md:py-3 sticky top-0 z-50">
+    <nav className="navbar bg-gradient-to-b from-blue-100 via-white to-blue-50 shadow-md p-0 pr-2 md:px-6 md:py-3 sticky top-0 z-50">
       <div className="navbar-start flex items-center gap-4">
         <div className="dropdown">
           <label
