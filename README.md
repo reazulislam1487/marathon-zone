@@ -1,12 +1,50 @@
-# React + Vite
+🏃 Marathon Hub
+Live Site: [your-live-site-url.com]
+Client Repo: GitHub - Client
+Server Repo: GitHub - Server
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web app that connects marathon organizers and participants. Users can create events, register, and manage activities from a personal dashboard.
 
-Currently, two official plugins are available:
+🚀 Key Features
+🔐 JWT-authenticated private routes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📋 CRUD for marathons and registrations
 
-## Expanding the ESLint configuration
+📱 Responsive design (mobile, tablet, desktop)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🔍 Server-side search & sort
+
+🌓 Dark/Light mode toggle
+
+🧩 Core Pages
+Home: Banner, 6 marathon cards (from DB), upcoming events
+
+Login/Register: Email/password + Google login
+
+Dashboard: Add marathon, My Marathons, My Apply List
+
+Details Page: Countdown timer, register button, total count
+
+🛠️ Tech Stack
+Frontend: React, Tailwind, Firebase Auth, React Router
+
+Backend: Node.js, Express, MongoDB, JWT
+
+Extras: SweetAlert, React Datepicker, Countdown Timer
+
+🔐 Env Setup
+Use .env to store sensitive info:
+
+makefile
+Copy
+Edit
+VITE_FIREBASE_API_KEY=
+VITE_API_URL=
+✅ Submission Checklist
+18+ Client Commits
+
+8+ Server Commits
+
+Live Site + GitHub Repos
+
+All required + optional features
