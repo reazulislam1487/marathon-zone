@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
@@ -48,14 +49,16 @@ const Banner = () => {
             unyielding spirit to go the distance — every step forward is a
             victory.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onHoverStart={() => console.log("hover started!")}
-            className="btn btn-primary animate-pulse"
-          >
-            Learn More
-          </motion.button>
+          <Link to="/marathons">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onHoverStart={() => console.log("hover started!")}
+              className="btn btn-primary animate-pulse"
+            >
+              Find Marathons
+            </motion.button>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,5 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
 .active {
   color: blue;
 }

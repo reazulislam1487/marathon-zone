@@ -3,7 +3,6 @@ import RootLayout from "../layouts/RootLayout";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Shared/Login";
 import PrivateRoute from "../Contexts/PrivateRoute";
-
 import Register from "../Pages/Shared/Register";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AddMarathon from "../Pages/DashboardPages/AddMarathon";
