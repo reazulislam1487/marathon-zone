@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const NotFound = () => {
+  usePageTitle("Page Not Found");
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-50 via-white to-blue-100 px-4 text-center">
       <img

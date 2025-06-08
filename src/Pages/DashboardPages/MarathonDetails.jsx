@@ -243,8 +243,11 @@ import {
 } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 import Loading from "../Shared/Loading";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const MarathonDetails = () => {
+  usePageTitle("Marathon Details ");
+
   const { id } = useParams();
   const [marathon, setMarathon] = useState(null);
   const [loading, setLoading] = useState(true);

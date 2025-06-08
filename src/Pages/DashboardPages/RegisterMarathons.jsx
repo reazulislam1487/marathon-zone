@@ -208,8 +208,11 @@ import { FaUser, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import Loading from "../Shared/Loading";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const RegisterMarathons = () => {
+  usePageTitle("Register Marathon");
+
   const { id } = useParams();
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -266,7 +269,6 @@ const RegisterMarathons = () => {
 
       navigate("/dashboard/my-applies");
     } catch (error) {
-      console.error();
       Swal.fire({
         icon: "error",
         title: "Oops...",

@@ -98,8 +98,11 @@ import { Link, useLocation, useNavigate } from "react-router";
 import RegisterAnimation from "../../assets/RegisterAnimation.json";
 import { AuthContext } from "../../Contexts/AuthContext";
 import SocialLogin from "../Home/SocialLogin";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const Login = () => {
+  usePageTitle("Login");
+
   const { signInUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -111,7 +114,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     signInUser(email, password)
-      .then((result) => {
+      .then(() => {
         form.reset();
         navigate(from);
       })

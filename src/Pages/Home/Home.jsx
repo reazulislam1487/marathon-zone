@@ -5,7 +5,10 @@ import SliderPage from "../Shared/SliderPage";
 import MarathonEvents from "./Marathonevents";
 import MarathonsSection from "./MarathonsSection";
 import WhyJoinSection from "./WhyJoinSection";
+import usePageTitle from "../../hooks/usePageTitle";
 const Home = () => {
+  usePageTitle("Home");
+
   return (
     <div>
       <SliderPage></SliderPage>

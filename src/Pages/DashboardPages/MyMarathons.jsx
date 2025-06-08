@@ -1,5 +1,3 @@
-
-
 // import { useEffect, useState } from "react";
 // import axios from "axios";
 // import { FaEdit, FaTrash } from "react-icons/fa";
@@ -231,8 +229,11 @@ import axios from "axios";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../Shared/Loading";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const MyMarathons = () => {
+  usePageTitle("My Marathons");
+
   const { user } = useAuth();
   const [marathons, setMarathons] = useState([]);
   const [selectedMarathon, setSelectedMarathon] = useState(null);

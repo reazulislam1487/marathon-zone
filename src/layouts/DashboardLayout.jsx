@@ -3,8 +3,11 @@ import Sidebar from "../Pages/DashboardPages/Sidebar";
 import { Outlet } from "react-router";
 import Navbar from "../Pages/Shared/Navbar";
 import Footer from "../Pages/Shared/Footer";
+import usePageTitle from "../hooks/usePageTitle";
 
 const DashboardLayout = () => {
+  usePageTitle("Dashboard");
+
   return (
     <div>
       <nav>

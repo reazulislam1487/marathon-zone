@@ -167,8 +167,11 @@ import { AuthContext } from "../../Contexts/AuthContext";
 import SocialLogin from "../Home/SocialLogin";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const Register = () => {
+  usePageTitle("Register");
+
   const { createUser, setUser, updateUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");

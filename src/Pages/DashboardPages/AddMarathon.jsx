@@ -162,8 +162,11 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const AddMarathon = () => {
+  usePageTitle("Add Marathon");
+
   const { user } = useAuth();
 
   // Separate state for dates

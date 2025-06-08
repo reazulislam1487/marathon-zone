@@ -176,8 +176,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router";
 import Loading from "../Shared/Loading";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const AllMarathons = () => {
+  usePageTitle("All Marathons");
+
   const [marathons, setMarathons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState("desc");

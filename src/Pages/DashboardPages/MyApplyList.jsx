@@ -84,8 +84,11 @@ import React, { useEffect, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../Shared/Loading";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const MyApplyList = () => {
+  usePageTitle("My Apply List");
+
   const { user } = useAuth();
   const [marathons, setMarathons] = useState([]);
   const [loading, setLoading] = useState(true);
