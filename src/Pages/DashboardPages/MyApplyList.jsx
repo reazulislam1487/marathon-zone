@@ -85,6 +85,8 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../Shared/Loading";
 import usePageTitle from "../../hooks/usePageTitle";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const MyApplyList = () => {
   usePageTitle("My Apply List");
@@ -104,6 +106,37 @@ const MyApplyList = () => {
     }
   }, [user?.email]);
 
+  const handleDelete = async (id) => {
+    console.log(id);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:3000/my-applylist/${id}`)
+          .then(() => {
+            // Update UI
+            setMarathons((prev) =>
+              prev.filter((marathon) => marathon._id !== id)
+            );
+
+            // Success alert
+            Swal.fire("Deleted!", "Your marathon has been deleted.", "success");
+          })
+          .catch((err) => {
+            console.error("Failed to delete marathon:", err);
+            Swal.fire("Error", "Failed to delete the marathon.", "error");
+          });
+      }
+    });
+  };
   if (loading) return <Loading />;
 
   return (
@@ -148,6 +181,7 @@ const MyApplyList = () => {
                       <FaEdit className="inline-block" />
                     </button>
                     <button
+                      onClick={() => handleDelete(marathon._id)}
                       className="text-red-600 hover:text-red-800 transition cursor-pointer px-3 py-1 rounded-md bg-red-50 hover:bg-red-100"
                       title="Delete"
                     >
