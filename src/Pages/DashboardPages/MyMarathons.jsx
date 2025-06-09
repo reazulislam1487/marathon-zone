@@ -95,32 +95,6 @@ const MyMarathons = () => {
     });
   };
 
-  // const handleDelete = async (id) => {
-  //   console.log(id);
-
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       axios
-  //         .delete(`http://localhost:3000/my-marathons/${id}`)
-  //         .then((result) => {
-  //           setMarathons((prev) =>
-  //             prev.filter((marathon) => marathon._id !== id)
-  //           );
-  //           Swal.fire("Deleted!", "Your marathon has been deleted.", "success");
-  //         })
-  //         .catch((err) => console.error("Failed to delete marathon:", err));
-  //     }
-  //   });
-  // };
-
   if (loading) return <Loading />;
 
   return (
@@ -132,8 +106,57 @@ const MyMarathons = () => {
       {marathons.length === 0 ? (
         <p className="text-center text-gray-500 text-lg">No marathons found.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-200 shadow-sm rounded-lg overflow-hidden">
+        // <div className="overflow-x-auto">
+        //   <table className="min-w-full bg-white border border-gray-200 shadow-sm rounded-lg overflow-hidden">
+        //     <thead className="bg-blue-100 text-blue-800 uppercase text-sm font-semibold">
+        //       <tr>
+        //         <th className="px-5 py-4 text-left">#</th>
+        //         <th className="px-5 py-4 text-left">Title</th>
+        //         <th className="px-5 py-4 text-left">Location</th>
+        //         <th className="px-5 py-4 text-left">Date</th>
+        //         <th className="px-5 py-4 text-center">Actions</th>
+        //       </tr>
+        //     </thead>
+        //     <tbody>
+        //       {marathons.map((marathon, index) => (
+        //         <tr
+        //           key={marathon._id}
+        //           className="border-t hover:bg-gray-50 transition duration-200"
+        //         >
+        //           <td className="px-5 py-3">{index + 1}</td>
+        //           <td className="px-5 py-3 font-medium text-gray-800">
+        //             {marathon.title}
+        //           </td>
+        //           <td className="px-5 py-3">{marathon.location}</td>
+        //           <td className="px-5 py-3">
+        //             {new Date(marathon.startDate).toLocaleDateString()}
+        //           </td>
+        //           <td className="px-5 py-3 text-center space-x-5">
+        //             <button
+        //               onClick={() => {
+        //                 setSelectedMarathon(marathon);
+        //                 setShowUpdateModal(true);
+        //               }}
+        //               className="text-blue-600 hover:text-blue-800 transition cursor-pointer text-lg"
+        //               title="Update"
+        //             >
+        //               <FaEdit />
+        //             </button>
+        //             <button
+        //               onClick={() => handleDelete(marathon._id)}
+        //               className="text-red-600 hover:text-red-800 transition cursor-pointer text-lg"
+        //               title="Delete"
+        //             >
+        //               <FaTrash />
+        //             </button>
+        //           </td>
+        //         </tr>
+        //       ))}
+        //     </tbody>
+        //   </table>
+        // </div>
+        <div className="w-full overflow-x-auto">
+          <table className="w-full min-w-[640px] table-auto bg-white border border-gray-200 shadow-sm rounded-lg">
             <thead className="bg-blue-100 text-blue-800 uppercase text-sm font-semibold">
               <tr>
                 <th className="px-5 py-4 text-left">#</th>

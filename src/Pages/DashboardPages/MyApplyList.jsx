@@ -80,7 +80,9 @@
 // };
 
 // export default MyApplyList;
+
 import React, { useEffect, useState } from "react";
+
 import { FaEdit, FaTrash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../Shared/Loading";
@@ -148,50 +150,100 @@ const MyApplyList = () => {
       {marathons.length === 0 ? (
         <p className="text-center text-gray-500">No marathons found.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden">
-            <thead className="bg-blue-100 text-gray-700 uppercase text-sm">
-              <tr>
-                <th className="px-5 py-4 text-left">#</th>
-                <th className="px-5 py-4 text-left">Title</th>
-                <th className="px-5 py-4 text-left">Date</th>
-                <th className="px-5 py-4 text-left">Location</th>
-                <th className="px-5 py-4 text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {marathons.map((marathon, index) => (
-                <tr
-                  key={marathon._id}
-                  className="border-t hover:bg-gray-50 transition duration-150"
-                >
-                  <td className="px-5 py-4">{index + 1}</td>
-                  <td className="px-5 py-4 font-medium text-gray-800">
-                    {marathon.marathonTitle}
-                  </td>
-                  <td className="px-5 py-4">
-                    {new Date(marathon.marathonStartDate).toLocaleDateString()}
-                  </td>
-                  <td className="px-5 py-4">{marathon.location}</td>
-                  <td className="px-5 py-4 text-center space-x-4">
-                    <button
-                      className="text-blue-600 hover:text-blue-800 transition cursor-pointer px-3 py-1 rounded-md bg-blue-50 hover:bg-blue-100"
-                      title="Edit"
-                    >
-                      <FaEdit className="inline-block" />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(marathon._id)}
-                      className="text-red-600 hover:text-red-800 transition cursor-pointer px-3 py-1 rounded-md bg-red-50 hover:bg-red-100"
-                      title="Delete"
-                    >
-                      <FaTrash className="inline-block" />
-                    </button>
-                  </td>
+        // <div className="overflow-x-auto">
+        //   <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden">
+        //     <thead className="bg-blue-100 text-gray-700 uppercase text-sm">
+        //       <tr>
+        //         <th className="px-5 py-4 text-left">#</th>
+        //         <th className="px-5 py-4 text-left">Title</th>
+        //         <th className="px-5 py-4 text-left">Date</th>
+        //         <th className="px-5 py-4 text-left">Location</th>
+        //         <th className="px-5 py-4 text-center">Actions</th>
+        //       </tr>
+        //     </thead>
+        //     <tbody>
+        //       {marathons.map((marathon, index) => (
+        //         <tr
+        //           key={marathon._id}
+        //           className="border-t hover:bg-gray-50 transition duration-150"
+        //         >
+        //           <td className="px-5 py-4">{index + 1}</td>
+        //           <td className="px-5 py-4 font-medium text-gray-800">
+        //             {marathon.marathonTitle}
+        //           </td>
+        //           <td className="px-5 py-4">
+        //             {new Date(marathon.marathonStartDate).toLocaleDateString()}
+        //           </td>
+        //           <td className="px-5 py-4">{marathon.location}</td>
+        //           <td className="px-5 py-4 text-center space-x-4">
+        //             <button
+        //               className="text-blue-600 hover:text-blue-800 transition cursor-pointer px-3 py-1 rounded-md bg-blue-50 hover:bg-blue-100"
+        //               title="Edit"
+        //             >
+        //               <FaEdit className="inline-block" />
+        //             </button>
+        //             <button
+        //               onClick={() => handleDelete(marathon._id)}
+        //               className="text-red-600 hover:text-red-800 transition cursor-pointer px-3 py-1 rounded-md bg-red-50 hover:bg-red-100"
+        //               title="Delete"
+        //             >
+        //               <FaTrash className="inline-block" />
+        //             </button>
+        //           </td>
+        //         </tr>
+        //       ))}
+        //     </tbody>
+        //   </table>
+        // </div>
+
+        <div className="w-full overflow-x-auto">
+          <div className="min-w-full">
+            <table className="w-full table-auto bg-white border border-gray-200 shadow-md rounded-lg text-sm">
+              <thead className="bg-blue-100 text-gray-700 uppercase text-sm">
+                <tr>
+                  <th className="px-5 py-4 text-left">#</th>
+                  <th className="px-5 py-4 text-left">Title</th>
+                  <th className="px-5 py-4 text-left">Date</th>
+                  <th className="px-5 py-4 text-left">Location</th>
+                  <th className="px-5 py-4 text-center">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {marathons.map((marathon, index) => (
+                  <tr
+                    key={marathon._id}
+                    className="border-t hover:bg-gray-50 transition duration-150"
+                  >
+                    <td className="px-5 py-4">{index + 1}</td>
+                    <td className="px-5 py-4 font-medium text-gray-800">
+                      {marathon.marathonTitle}
+                    </td>
+                    <td className="px-5 py-4">
+                      {new Date(
+                        marathon.marathonStartDate
+                      ).toLocaleDateString()}
+                    </td>
+                    <td className="px-5 py-4">{marathon.location}</td>
+                    <td className="px-5 py-3 text-center space-x-5">
+                      <button
+                        className="text-blue-600 hover:text-blue-800 transition cursor-pointer text-lg"
+                        title="Edit"
+                      >
+                        <FaEdit className="inline-block" />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(marathon._id)}
+                        className="text-red-600 hover:text-red-800 transition cursor-pointer text-lg"
+                        title="Delete"
+                      >
+                        <FaTrash className="inline-block" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>
