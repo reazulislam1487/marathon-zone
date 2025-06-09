@@ -142,7 +142,7 @@ const MarathonsSection = () => {
       <div className=" mt-5 p-4 text-center">
         <Link
           to="/marathons"
-          className="bg-blue-600  text-white px-6 py-3 rounded-lg hover:bg-blue-700 animate-pulse transition"
+          className="bg-blue-600  text-white px-6 py-3 rounded-lg hover:bg-blue-700 cursor-pointer transition"
         >
           See More
         </Link>

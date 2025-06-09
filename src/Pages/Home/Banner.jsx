@@ -74,7 +74,7 @@ const Banner = () => {
   return (
     <div className="hero bg-blue-50 min-h-[24rem] sm:min-h-[28rem] md:min-h-[32rem] lg:min-h-[36rem] px-4 sm:px-8">
       <div className="hero-content flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 max-w-7xl mx-auto">
-        <div className="flex-1 flex flex-col space-y-6 sm:space-y-8 items-center lg:items-start">
+        <div className="flex-1 hidden md:flex flex-col space-y-6 sm:space-y-8 items-center lg:items-start">
           <motion.img
             src="https://i.ibb.co/0RjtNc6N/613569c08c96ecf954710544fb7692f5c36023458c7e8480300a6202586fa339-rimg-w1200-h675-dc2a341a-gmir-v-174.jpg"
             animate={{ y: [150, 100, 150] }}

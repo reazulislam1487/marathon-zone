@@ -203,7 +203,7 @@ const MyApplyList = () => {
         // </div>
 
         <div className="w-full overflow-x-auto">
-          <div className="mb-6 text-center">
+          <div className="mb-6 mt-1 text-center">
             <input
               type="text"
               placeholder="Search by Title..."

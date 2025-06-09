@@ -298,7 +298,7 @@ const AddMarathon = () => {
         />
 
         <input
-          type="text"
+          type="url"
           name="image"
           placeholder="Image URL"
           className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
