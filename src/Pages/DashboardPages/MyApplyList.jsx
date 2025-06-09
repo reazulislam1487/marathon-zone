@@ -96,6 +96,12 @@ const MyApplyList = () => {
   const { user } = useAuth();
   const [marathons, setMarathons] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Filtered marathons based on search input
+  const filteredMarathons = marathons.filter((marathon) =>
+    marathon.marathonTitle.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     if (user?.email) {
@@ -197,6 +203,16 @@ const MyApplyList = () => {
         // </div>
 
         <div className="w-full overflow-x-auto">
+          <div className="mb-6 text-center">
+            <input
+              type="text"
+              placeholder="Search by Title..."
+              className="px-4 py-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-sm"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+
           <div className="min-w-full">
             <table className="w-full table-auto bg-white border border-gray-200 shadow-md rounded-lg text-sm">
               <thead className="bg-blue-100 text-gray-700 uppercase text-sm">
@@ -209,7 +225,7 @@ const MyApplyList = () => {
                 </tr>
               </thead>
               <tbody>
-                {marathons.map((marathon, index) => (
+                {filteredMarathons.map((marathon, index) => (
                   <tr
                     key={marathon._id}
                     className="border-t hover:bg-gray-50 transition duration-150"

@@ -29,7 +29,7 @@ const MyMarathons = () => {
     }
   }, [user.email]);
 
-  const handleUpdate = async (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
 
@@ -45,24 +45,32 @@ const MyMarathons = () => {
       createdBy: form.createdBy.value,
     };
 
-    try {
-      await axios.put(
+    axios
+      .put(
         `http://localhost:3000/my-marathons/${selectedMarathon._id}`,
         updatedData
-      );
+      )
+      .then((res) => {
+        const data = res.data;
 
-      const updatedList = marathons.map((m) =>
-        m._id === selectedMarathon._id ? { ...m, ...updatedData } : m
-      );
-      setMarathons(updatedList);
-      setShowUpdateModal(false);
-      setSelectedMarathon(null);
+        if (data.modifiedCount > 0) {
+          // Update frontend state only if update was successful
+          const updatedList = marathons.map((m) =>
+            m._id === selectedMarathon._id ? { ...m, ...updatedData } : m
+          );
+          setMarathons(updatedList);
+          setShowUpdateModal(false);
+          setSelectedMarathon(null);
 
-      Swal.fire("Success", "Marathon updated successfully!", "success");
-    } catch (err) {
-      console.error("Update error:", err);
-      Swal.fire("Error", "Failed to update marathon.", "error");
-    }
+          Swal.fire("Updated!", "Your marathon has been updated.", "success");
+        } else {
+          Swal.fire("No Change", "No update was made to the marathon.", "info");
+        }
+      })
+      .catch((err) => {
+        console.error("Update error:", err);
+        Swal.fire("Error", "Failed to update marathon.", "error");
+      });
   };
 
   const handleDelete = async (id) => {
