@@ -243,6 +243,7 @@ const RegisterMarathons = () => {
       email: user?.email,
       marathonTitle: marathon.title,
       marathonStartDate: marathon.startDate,
+      location: marathon.location,
       ...formData,
     };
 
@@ -281,7 +282,7 @@ const RegisterMarathons = () => {
   if (!marathon) return <Loading />;
 
   return (
-    <div className="max-w-2xl mx-auto bg-white shadow-lg p-8 rounded-2xl mt-10">
+    <div className="max-w-2xl  mx-auto bg-white shadow-lg p-8 rounded-2xl my-10">
       <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">
         Register for {marathon.title}
       </h2>

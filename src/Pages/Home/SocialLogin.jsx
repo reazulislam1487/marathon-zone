@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const SocialLogin = () => {
   const { signInWithGoogle } = useContext(AuthContext);
+   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state || "/";
+  // const from = location.state?.from?.pathname || "/";
   const handleGoogleLogin = () => {
     signInWithGoogle()
       .then(() => {

@@ -18,16 +18,25 @@ const MyMarathons = () => {
   useEffect(() => {
     if (user.email) {
       axios
-        .get("http://localhost:3000/marathons", {
-          params: { email: user.email },
-        })
+        .get(
+          "http://localhost:3000/marathons",
+          {
+            headers: {
+              authorization: `Bearer ${user?.accessToken}`,
+              "Content-Type": "application/json",
+            },
+          },
+          {
+            params: { email: user.email },
+          }
+        )
         .then((res) => {
           setMarathons(res.data);
           setLoading(false);
         })
         .catch((err) => console.error("Failed to fetch marathons:", err));
     }
-  }, [user.email]);
+  }, [user.email, user?.accessToken]);
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -171,106 +180,153 @@ const MyMarathons = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
           <form
             onSubmit={handleUpdate}
-            className="bg-white p-6 rounded-xl shadow-lg w-full max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-4"
+            className="bg-white p-5 sm:p-6 rounded-2xl shadow-xl w-full max-w-2xl animate-fade-in grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
-            <h3 className="md:col-span-2 text-xl font-semibold text-blue-700 text-center mb-4">
-              ✏️ Update Marathon
+            <h3 className="col-span-1 sm:col-span-2 text-xl sm:text-2xl font-semibold text-blue-700 text-center mb-1">
+              Update Marathon
             </h3>
 
-            <input
-              name="title"
-              defaultValue={selectedMarathon.title}
-              placeholder="Title"
-              required
-              className="input"
-              readOnly
-            />
-            <input
-              name="location"
-              defaultValue={selectedMarathon.location}
-              placeholder="Location"
-              required
-              className="input"
-            />
+            {/* Title (readonly) */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Title
+              </label>
+              <input
+                type="text"
+                name="title"
+                defaultValue={selectedMarathon.title}
+                readOnly
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg bg-gray-100 text-sm"
+              />
+            </div>
 
-            {/* Distance Dropdown */}
-            <select
-              name="distance"
-              defaultValue={selectedMarathon.distance}
-              required
-              className="input"
-            >
-              <option value="5k">5k</option>
-              <option value="10k">10k</option>
-              <option value="25k">25k</option>
-            </select>
-            <input
-              name="image"
-              defaultValue={selectedMarathon.image}
-              placeholder="Image URL"
-              required
-              className="input"
-            />
-            <input
-              name="createdBy"
-              defaultValue={selectedMarathon.createdBy}
-              placeholder="Created By Email"
-              required
-              className="input"
-              readOnly
-            />
-            <input
-              name="description"
-              defaultValue={selectedMarathon.description}
-              placeholder="Description"
-              required
-              className="input"
-            />
-            <label className="text-sm text-gray-600 col-span-2">
-              Start Registration Date
-            </label>
-            <input
-              name="startRegDate"
-              type="date"
-              defaultValue={selectedMarathon.startRegDate?.slice(0, 10)}
-              required
-              className="input col-span-2"
-            />
+            {/* Location */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Location
+              </label>
+              <input
+                type="text"
+                name="location"
+                defaultValue={selectedMarathon.location}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-            <label className="text-sm text-gray-600 col-span-2">
-              End Registration Date
-            </label>
-            <input
-              name="endRegDate"
-              type="date"
-              defaultValue={selectedMarathon.endRegDate?.slice(0, 10)}
-              required
-              className="input col-span-2"
-            />
+            {/* Distance */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Distance
+              </label>
+              <select
+                name="distance"
+                defaultValue={selectedMarathon.distance}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="5k">5k</option>
+                <option value="10k">10k</option>
+                <option value="25k">25k</option>
+              </select>
+            </div>
 
-            <label className="text-sm text-gray-600 col-span-2">
-              Start Marathon Date
-            </label>
-            <input
-              name="startDate"
-              type="date"
-              defaultValue={selectedMarathon.startDate?.slice(0, 10)}
-              required
-              className="input col-span-2"
-              readOnly
-            />
+            {/* Image URL */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Image URL
+              </label>
+              <input
+                type="text"
+                name="image"
+                defaultValue={selectedMarathon.image}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-            <div className="md:col-span-2 flex justify-end mt-4 space-x-4">
+            {/* Created By (readonly) */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Created By
+              </label>
+              <input
+                type="email"
+                name="createdBy"
+                defaultValue={selectedMarathon.createdBy}
+                readOnly
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg bg-gray-100 text-sm"
+              />
+            </div>
+
+            {/* Description */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Description
+              </label>
+              <input
+                type="text"
+                name="description"
+                defaultValue={selectedMarathon.description}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Start Registration Date */}
+            <div className="col-span-1 sm:col-span-2">
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Start Registration Date
+              </label>
+              <input
+                type="date"
+                name="startRegDate"
+                defaultValue={selectedMarathon.startRegDate?.slice(0, 10)}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* End Registration Date */}
+            <div className="col-span-1 sm:col-span-2">
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                End Registration Date
+              </label>
+              <input
+                type="date"
+                name="endRegDate"
+                defaultValue={selectedMarathon.endRegDate?.slice(0, 10)}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Marathon Start Date (readonly) */}
+            <div className="col-span-1 sm:col-span-2">
+              <label className="text-sm font-medium text-gray-700 mb-1 block">
+                Start Marathon Date
+              </label>
+              <input
+                type="date"
+                name="startDate"
+                defaultValue={selectedMarathon.startDate?.slice(0, 10)}
+                readOnly
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg bg-gray-100 text-sm"
+              />
+            </div>
+
+            {/* Buttons */}
+            <div className="col-span-1 sm:col-span-2 flex justify-end gap-3 mt-2">
               <button
                 type="button"
                 onClick={() => setShowUpdateModal(false)}
-                className="px-4 py-2 rounded bg-gray-300 text-gray-800 hover:bg-gray-400 transition"
+                className="px-4 py-2 text-sm rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition"
+                className="px-4 py-2 text-sm rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium"
               >
                 Save Changes
               </button>
@@ -279,37 +335,14 @@ const MyMarathons = () => {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
-      {/* {showDeleteModal && selectedMarathon && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 px-4">
-          <div className="bg-white p-6 rounded-lg w-full max-w-sm shadow-xl">
-            <h3 className="text-xl font-bold mb-5 text-red-600 text-center">
-              Confirm Delete
-            </h3>
-            <p className="text-gray-700 mb-6 text-center text-base">
-              Are you sure you want to delete{" "}
-              <span className="font-semibold text-gray-900">
-                "{selectedMarathon.title}"
-              </span>
-              ?
-            </p>
-            <div className="flex justify-center space-x-6">
-              <button
-                onClick={() => setShowDeleteModal(false)}
-                className="px-6 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleDelete}
-                className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )} */}
+      <div className="mt-8 text-center">
+        <p className="text-gray-500">
+          Want to create a new marathon?{" "}
+          <a href="/dashboard" className="text-blue-600 hover:underline">
+            Click here
+          </a>
+        </p>
+      </div>
     </div>
   );
 };

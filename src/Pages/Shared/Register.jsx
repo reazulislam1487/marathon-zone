@@ -162,7 +162,7 @@ import Lottie from "lottie-react";
 import { motion } from "motion/react";
 
 import RegisterAnimation from "../../assets/RegisterAnimation.json";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Contexts/AuthContext";
 import SocialLogin from "../Home/SocialLogin";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -175,6 +175,9 @@ const Register = () => {
   const { createUser, setUser, updateUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state || "/";
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -216,6 +219,7 @@ const Register = () => {
               confirmButtonColor: "#2563EB",
             });
             form.reset();
+            navigate(from);
           })
           .catch((error) => {
             alert("Error updating user profile:", error.message);

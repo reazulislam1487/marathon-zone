@@ -177,9 +177,12 @@ import axios from "axios";
 import { Link } from "react-router";
 import Loading from "../Shared/Loading";
 import usePageTitle from "../../hooks/usePageTitle";
+import useAuth from "../../hooks/useAuth";
 
 const AllMarathons = () => {
   usePageTitle("All Marathons");
+
+  const { user } = useAuth();
 
   const [marathons, setMarathons] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -188,7 +191,18 @@ const AllMarathons = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:3000/marathons?sort=${sortOrder}`)
+      .get(
+        `http://localhost:3000/marathons?sort=${sortOrder}`,
+        {
+          headers: {
+            authorization: `Bearer ${user?.accessToken}`,
+            "Content-Type": "application/json",
+          },
+        },
+        {
+          params: { email: user.email },
+        }
+      )
       .then((res) => {
         setMarathons(res.data);
         setLoading(false);
@@ -197,7 +211,7 @@ const AllMarathons = () => {
         console.error("Failed to fetch marathons:", err);
         setLoading(false);
       });
-  }, [sortOrder]);
+  }, [sortOrder, user?.accessToken, user.email]); // Re-fetch when sortOrder or accessToken changes
 
   if (loading) return <Loading />;
 
