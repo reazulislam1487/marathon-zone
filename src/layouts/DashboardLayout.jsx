@@ -4,12 +4,14 @@ import { Outlet } from "react-router";
 import Navbar from "../Pages/Shared/Navbar";
 import Footer from "../Pages/Shared/Footer";
 import usePageTitle from "../hooks/usePageTitle";
+import ScrollToTop from "../Pages/Shared/ScrollToTop";
 
 const DashboardLayout = () => {
   usePageTitle("Dashboard");
 
   return (
-    <div>
+    <>
+      <ScrollToTop></ScrollToTop>
       <nav>
         <Navbar></Navbar>
       </nav>
@@ -24,7 +26,7 @@ const DashboardLayout = () => {
       <footer>
         <Footer></Footer>
       </footer>
-    </div>
+    </>
   );
 };
 

@@ -50,7 +50,7 @@ const Footer = () => {
 
         {/* Company */}
         <div>
-          <h4 className="text-lg font-semibold text-blue-600 mb-4">Company</h4>
+          <h4 className="text-lg font-semibold text-blue-600 mb-4">Useful Links</h4>
           <ul className="space-y-2 text-sm">
             <li>
               <Link to="#" className="hover:text-blue-500 transition">
@@ -58,13 +58,13 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="#" className="hover:text-blue-500 transition">
-                Careers
+              <Link to="/" className="hover:text-blue-500 transition">
+                Home
               </Link>
             </li>
             <li>
-              <Link to="#" className="hover:text-blue-500 transition">
-                Blog
+              <Link to="/marathons" className="hover:text-blue-500 transition">
+                Marathons
               </Link>
             </li>
             <li>

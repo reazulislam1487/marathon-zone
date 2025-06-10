@@ -282,7 +282,7 @@ const RegisterMarathons = () => {
   if (!marathon) return <Loading />;
 
   return (
-    <div className="max-w-2xl  mx-auto bg-white shadow-lg p-8 rounded-2xl my-10">
+    <div className="max-w-2xl  mx-6 md:mx-auto bg-white shadow-lg  p-8 rounded-2xl my-10">
       <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">
         Register for {marathon.title}
       </h2>
@@ -292,7 +292,7 @@ const RegisterMarathons = () => {
         <div>
           <label className="block mb-1 font-medium text-gray-700">Email</label>
           <div className="relative">
-            <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
+            <FaEnvelope className="absolute left-3 top-4.5 text-gray-400" />
             <input
               type="email"
               value={user?.email || ""}
@@ -366,7 +366,7 @@ const RegisterMarathons = () => {
             Contact Number
           </label>
           <div className="relative">
-            <FaPhoneAlt className="absolute left-3 top-3 text-gray-400" />
+            <FaPhoneAlt className="absolute left-3 top-4.5 text-gray-400" />
             <input
               type="text"
               name="phone"
