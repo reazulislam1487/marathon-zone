@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../Shared/Loading";
 import usePageTitle from "../../hooks/usePageTitle";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyMarathons = () => {
   usePageTitle("My Marathons");
@@ -14,29 +15,29 @@ const MyMarathons = () => {
   const [selectedMarathon, setSelectedMarathon] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [loading, setLoading] = useState(true);
+  const instance = useAxiosSecure();
 
   useEffect(() => {
     if (user.email) {
-      axios
-        .get(
-          `https://marathon-server-side-five.vercel.app/marathons?email=${user.email}`,
-          {
-            headers: {
-              authorization: `Bearer ${user?.accessToken}`,
-              "Content-Type": "application/json",
-            },
+      instance(
+        `/marathons?email=${user.email}`,
+        {
+          headers: {
+            authorization: `Bearer ${user?.accessToken}`,
+            "Content-Type": "application/json",
           },
-          {
-            params: { email: user.email },
-          }
-        )
+        },
+        {
+          params: { email: user.email },
+        }
+      )
         .then((res) => {
           setMarathons(res.data);
           setLoading(false);
         })
         .catch((err) => console.error("Failed to fetch marathons:", err));
     }
-  }, [user.email, user?.accessToken]);
+  }, [user.email, user?.accessToken, instance]);
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -54,11 +55,8 @@ const MyMarathons = () => {
       createdBy: form.createdBy.value,
     };
 
-    axios
-      .put(
-        `https://marathon-server-side-five.vercel.app/my-marathons/${selectedMarathon._id}`,
-        updatedData
-      )
+    instance
+      .put(`/my-marathons/${selectedMarathon._id}`, updatedData)
       .then((res) => {
         const data = res.data;
 
@@ -95,10 +93,8 @@ const MyMarathons = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(
-            `https://marathon-server-side-five.vercel.app/my-marathons/${id}`
-          )
+        instance
+          .delete(`/my-marathons/${id}`)
           .then(() => {
             // Update UI
             setMarathons((prev) =>

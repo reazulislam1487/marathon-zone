@@ -3,8 +3,9 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../Shared/Loading";
 import usePageTitle from "../../hooks/usePageTitle";
-import axios from "axios";
+// import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyApplyList = () => {
   usePageTitle("My Apply List");
@@ -15,29 +16,40 @@ const MyApplyList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedRegistration, setSelectedRegistration] = useState(null);
+  const instance = useAxiosSecure();
 
   const filteredMarathons = marathons.filter((marathon) =>
     marathon.marathonTitle.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     fetch(`http://localhost:3000/my-applylist?email=${user.email}`, {
+  //       headers: {
+  //         authorization: `Bearer ${user?.accessToken}`,
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setMarathons(data);
+  //         setLoading(false);
+  //       });
+  //   }
+  // }, [user?.email, user?.accessToken]);
   useEffect(() => {
     if (user?.email) {
-      fetch(
-        `https://marathon-server-side-five.vercel.app/my-applylist?email=${user.email}`,
-        {
-          headers: {
-            authorization: `Bearer ${user?.accessToken}`,
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setMarathons(data);
+      instance(`/my-applylist?email=${user.email}`)
+        .then((res) => {
+          setMarathons(res.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error("Error fetching apply list:", err);
           setLoading(false);
         });
     }
-  }, [user?.email, user?.accessToken]);
+  }, [user?.email, instance]);
 
   const handleDelete = async (id) => {
     Swal.fire({
@@ -50,10 +62,8 @@ const MyApplyList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(
-            `https://marathon-server-side-five.vercel.app/my-applylist/${id}`
-          )
+        instance
+          .delete(`/my-applylist/${id}`)
           .then(() => {
             setMarathons((prev) =>
               prev.filter((marathon) => marathon._id !== id)
@@ -88,11 +98,8 @@ const MyApplyList = () => {
       additionalInfo: form.additionalInfo.value,
     };
 
-    axios
-      .put(
-        `https://marathon-server-side-five.vercel.app/my-applylist/${selectedRegistration._id}`,
-        updatedData
-      )
+    instance
+      .put(`/my-applylist/${selectedRegistration._id}`, updatedData)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           Swal.fire(

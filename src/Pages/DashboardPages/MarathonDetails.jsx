@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
-import axios from "axios";
+// import axios from "axios";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "../../style.css";
 
@@ -14,6 +14,7 @@ import {
 import { MdOutlineDateRange } from "react-icons/md";
 import Loading from "../Shared/Loading";
 import usePageTitle from "../../hooks/usePageTitle";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MarathonDetails = () => {
   usePageTitle("Marathon Details ");
@@ -21,10 +22,10 @@ const MarathonDetails = () => {
   const { id } = useParams();
   const [marathon, setMarathon] = useState(null);
   const [loading, setLoading] = useState(true);
+  const instance = useAxiosSecure();
 
   useEffect(() => {
-    axios
-      .get(`https://marathon-server-side-five.vercel.app/marathons/${id}`)
+    instance(`/marathons/${id}`,)
       .then((res) => {
         setMarathon(res.data);
         setLoading(false);
@@ -33,7 +34,8 @@ const MarathonDetails = () => {
         console.error("Failed to fetch marathon:", err);
         setLoading(false);
       });
-  }, [id]);
+  }, [id, instance]);
+  // console.log(id);
 
   if (loading) return <Loading />;
 

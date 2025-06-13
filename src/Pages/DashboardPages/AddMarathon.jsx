@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import axios from "axios";
+// import axios from "axios";
 import Swal from "sweetalert2";
 import "react-datepicker/dist/react-datepicker.css";
 
 import useAuth from "../../hooks/useAuth";
 import usePageTitle from "../../hooks/usePageTitle";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AddMarathon = () => {
   usePageTitle("Add Marathon");
 
   const { user } = useAuth();
+  const instance = useAxiosSecure();
 
   // Separate state for dates
   const [startRegDate, setStartRegDate] = useState(null);
@@ -35,17 +37,14 @@ const AddMarathon = () => {
     };
 
     try {
-      const res = await axios.post(
-        "https://marathon-server-side-five.vercel.app/marathons",
-        newMarathon
-      );
+      const res = await instance.post("/marathons", newMarathon);
       if (res.data.insertedId) {
         Swal.fire({
           position: "center",
           icon: "success",
           title: "Marathon added successfully!",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 1000,
         });
         form.reset();
         setStartRegDate(null);

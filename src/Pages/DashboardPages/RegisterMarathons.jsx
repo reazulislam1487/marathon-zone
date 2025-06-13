@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import axios from "axios";
 import { FaUser, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import Loading from "../Shared/Loading";
 import usePageTitle from "../../hooks/usePageTitle";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const RegisterMarathons = () => {
   usePageTitle("Register Marathon");
+  const instance = useAxiosSecure();
 
   const { id } = useParams();
   const { user } = useAuth();
   const navigate = useNavigate();
   const [marathon, setMarathon] = useState(null);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -22,11 +24,10 @@ const RegisterMarathons = () => {
   });
 
   useEffect(() => {
-    axios
-      .get(`https://marathon-server-side-five.vercel.app/marathons/${id}`)
+    instance(`/marathons/${id}`)
       .then((res) => setMarathon(res.data))
       .catch((err) => console.error("Failed to fetch marathon:", err));
-  }, [id]);
+  }, [id, instance]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,16 +47,10 @@ const RegisterMarathons = () => {
     };
 
     try {
-      await axios.post(
-        "https://marathon-server-side-five.vercel.app/registrations",
-        registrationData
-      );
-      await axios.patch(
-        `https://marathon-server-side-five.vercel.app/marathons/${id}`,
-        {
-          registrationCount: 1,
-        }
-      );
+      await instance.post("/registrations", registrationData);
+      await instance.patch(`/marathons/${id}`, {
+        registrationCount: 1,
+      });
 
       Swal.fire({
         position: "center",

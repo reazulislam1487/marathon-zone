@@ -3,10 +3,10 @@ import axios from "axios";
 import useAuth from "./useAuth"; //
 
 const instance = axios.create({
-  baseURL: "https://marathon-server-side-five.vercel.app",
+  baseURL: "http://localhost:3000",
 });
 
-const useAxiosSecure = () => {
+const useAxiosSecure = () => { 
   const { user } = useAuth();
 
   useEffect(() => {

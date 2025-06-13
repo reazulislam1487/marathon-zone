@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router";
 
 import Loading from "../Shared/Loading";
 import usePageTitle from "../../hooks/usePageTitle";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AllMarathons = () => {
   usePageTitle("All Marathons");
@@ -14,22 +15,13 @@ const AllMarathons = () => {
   const [marathons, setMarathons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState("desc");
+  const instance = useAxiosSecure();
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(
-        `https://marathon-server-side-five.vercel.app/marathons?sort=${sortOrder}`,
-        {
-          headers: {
-            authorization: `Bearer ${user?.accessToken}`,
-            "Content-Type": "application/json",
-          },
-        },
-        {
-          params: { email: user.email },
-        }
-      )
+    instance(`/marathons?sort=${sortOrder}`, {
+      params: { email: user.email },
+    })
       .then((res) => {
         setMarathons(res.data);
         setLoading(false);
@@ -38,7 +30,7 @@ const AllMarathons = () => {
         console.error("Failed to fetch marathons:", err);
         setLoading(false);
       });
-  }, [sortOrder, user?.accessToken, user.email]); // Re-fetch when sortOrder or accessToken changes
+  }, [sortOrder, user?.accessToken, user.email, instance]); // Re-fetch when sortOrder or accessToken changes
 
   if (loading) return <Loading />;
 

@@ -16,7 +16,6 @@ const Home = () => {
       <div className="max-w-screen-xl mx-auto">
         <Banner></Banner>
         <MarathonsSection></MarathonsSection>
-
         <MarathonEvents></MarathonEvents>
         <FAQSection></FAQSection>
         <WhyJoinSection></WhyJoinSection>
