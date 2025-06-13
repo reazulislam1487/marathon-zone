@@ -50,7 +50,9 @@ const Footer = () => {
 
         {/* Company */}
         <div>
-          <h4 className="text-lg font-semibold text-blue-600 mb-4">Useful Links</h4>
+          <h4 className="text-lg font-semibold text-blue-600 mb-4">
+            Useful Links
+          </h4>
           <ul className="space-y-2 text-sm">
             <li>
               <Link to="#" className="hover:text-blue-500 transition">

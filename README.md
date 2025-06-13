@@ -1,7 +1,9 @@
-🏃 Marathon Hub
-Live Site: [your-live-site-url.com]
-Client Repo: GitHub - Client
-Server Repo: GitHub - Server
+🏃 Marathon Zone
+Live Site: https://marathonzonebyreaz.netlify.app
+
+Client Repo: https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-reazulislam1487-1.git
+
+Server Repo: https://github.com/Programming-Hero-Web-Course4/b11a11-server-side-reazulislam1487-1.git
 
 A full-stack web app that connects marathon organizers and participants. Users can create events, register, and manage activities from a personal dashboard.
 

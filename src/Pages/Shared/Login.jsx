@@ -32,9 +32,9 @@ const Login = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-base-200 min-h-screen overflow-x-hidden flex items-center justify-center">
       <div className="hero-content flex-col lg:flex-row-reverse gap-12 px-4 md:px-12">
-        <div className="text-center lg:text-left">
+        <div className="text-center w-full">
           <Lottie
             animationData={RegisterAnimation}
             style={{ width: "400px", maxWidth: "100%" }}
@@ -42,7 +42,7 @@ const Login = () => {
           />
         </div>
         <div className="card bg-white w-full max-w-sm shrink-0 shadow-xl rounded-lg">
-          <div className="card-body px-8 py-10">
+          <div className="card-body px-8 py-10 mx-auto ">
             <form onSubmit={handleLogin} className="space-y-5">
               <h1 className="text-4xl font-extrabold text-blue-700 mb-4">
                 Login now!
@@ -53,7 +53,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className="input input-bordered border-blue-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 rounded-md"
+                className="input w-full input-bordered border-blue-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 rounded-md"
                 required
               />
 
@@ -64,13 +64,13 @@ const Login = () => {
                 name="password"
                 type="password"
                 placeholder="Password"
-                className="input input-bordered border-blue-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 rounded-md"
+                className="input w-full input-bordered border-blue-300 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 rounded-md"
                 required
               />
 
               <div className="text-right">
                 <Link
-                  to="/login"
+                  to=""
                   className="link link-hover text-blue-600 hover:text-blue-800"
                 >
                   Forgot password?

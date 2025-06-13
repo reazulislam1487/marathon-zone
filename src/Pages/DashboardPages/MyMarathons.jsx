@@ -19,7 +19,7 @@ const MyMarathons = () => {
     if (user.email) {
       axios
         .get(
-          "http://localhost:3000/marathons",
+          `https://marathon-server-side-five.vercel.app/marathons?email=${user.email}`,
           {
             headers: {
               authorization: `Bearer ${user?.accessToken}`,
@@ -56,7 +56,7 @@ const MyMarathons = () => {
 
     axios
       .put(
-        `http://localhost:3000/my-marathons/${selectedMarathon._id}`,
+        `https://marathon-server-side-five.vercel.app/my-marathons/${selectedMarathon._id}`,
         updatedData
       )
       .then((res) => {
@@ -96,7 +96,9 @@ const MyMarathons = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/my-marathons/${id}`)
+          .delete(
+            `https://marathon-server-side-five.vercel.app/my-marathons/${id}`
+          )
           .then(() => {
             // Update UI
             setMarathons((prev) =>
@@ -104,7 +106,12 @@ const MyMarathons = () => {
             );
 
             // Success alert
-            Swal.fire("Deleted!", "Your marathon has been deleted.", "success");
+            Swal.fire({
+              title: "Deleted",
+              text: "Your marathon has been deleted.",
+              icon: "success",
+              timer: 1000,
+            });
           })
           .catch((err) => {
             console.error("Failed to delete marathon:", err);

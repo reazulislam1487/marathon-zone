@@ -1,4 +1,3 @@
-//
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
@@ -23,12 +22,15 @@ const MyApplyList = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/my-marathons?email=${user.email}`, {
-        headers: {
-          authorization: `Bearer ${user?.accessToken}`,
-          "Content-Type": "application/json",
-        },
-      })
+      fetch(
+        `https://marathon-server-side-five.vercel.app/my-applylist?email=${user.email}`,
+        {
+          headers: {
+            authorization: `Bearer ${user?.accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setMarathons(data);
@@ -49,12 +51,19 @@ const MyApplyList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/my-applylist/${id}`)
+          .delete(
+            `https://marathon-server-side-five.vercel.app/my-applylist/${id}`
+          )
           .then(() => {
             setMarathons((prev) =>
               prev.filter((marathon) => marathon._id !== id)
             );
-            Swal.fire("Deleted!", "Your marathon has been deleted.", "success");
+            Swal.fire({
+              title: "Deleted",
+              text: "Your marathon has been deleted.",
+              icon: "success",
+              timer: 1000,
+            });
           })
           .catch((err) => {
             console.error("Failed to delete marathon:", err);
@@ -69,43 +78,6 @@ const MyApplyList = () => {
     setShowUpdateModal(true);
   };
 
-  // const handleUpdate = (e) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const updatedData = {
-  //     firstName: form.firstName.value,
-  //     lastName: form.lastName.value,
-  //     phone: form.phone.value,
-  //     additionalInfo: form.additionalInfo.value,
-  //   };
-
-  //   axios
-  //     .put(
-  //       `http://localhost:3000/my-applylist/${selectedRegistration._id}`,
-  //       updatedData
-  //     )
-  //     .then((res) => {
-  //       if (res.data.modifiedCount > 0) {
-  //         Swal.fire(
-  //           "Success!",
-  //           "Registration updated successfully.",
-  //           "success"
-  //         );
-
-  //         // Update local list
-  //         setMarathons((prev) =>
-  //           prev.map((m) =>
-  //             m._id === selectedRegistration._id ? { ...m, ...updatedData } : m
-  //           )
-  //         );
-  //         setShowUpdateModal(false);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.error("Update failed:", err);
-  //       Swal.fire("Error", "Failed to update registration.", "error");
-  //     });
-  // };
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -118,7 +90,7 @@ const MyApplyList = () => {
 
     axios
       .put(
-        `http://localhost:3000/my-applylist/${selectedRegistration._id}`,
+        `https://marathon-server-side-five.vercel.app/my-applylist/${selectedRegistration._id}`,
         updatedData
       )
       .then((res) => {
@@ -128,12 +100,15 @@ const MyApplyList = () => {
             "Registration updated successfully.",
             "success"
           );
+
           setMarathons((prev) =>
             prev.map((m) =>
               m._id === selectedRegistration._id ? { ...m, ...updatedData } : m
             )
           );
           setShowUpdateModal(false);
+        } else {
+          Swal.fire("No Change", "No update was made to the marathon.", "info");
         }
       })
       .catch((err) => {
@@ -330,13 +305,13 @@ const MyApplyList = () => {
               <button
                 type="button"
                 onClick={() => setShowUpdateModal(false)}
-                className="px-4 py-2 text-sm rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700"
+                className="px-4 cursor-pointer py-2 text-sm rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 text-sm rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                className="px-4 py-2 cursor-pointer text-sm rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium"
               >
                 Update
               </button>
@@ -344,6 +319,14 @@ const MyApplyList = () => {
           </form>
         </div>
       )}
+      <div className="mt-8 text-center">
+        <p className="text-gray-500">
+          Want to apply a new marathon?{" "}
+          <a href="/marathons" className="text-blue-600 hover:underline">
+            Click here
+          </a>
+        </p>
+      </div>
     </div>
   );
 };

@@ -37,13 +37,13 @@ const WhyJoinSection = () => {
   ];
 
   return (
-    <section className=" text-gray-800 px-4 py-20">
+    <section className="text-gray-800 px-4 py-20">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-extrabold mb-6 text-black"
+          className="text-4xl md:text-5xl font-extrabold mb-6"
         >
           Why Join <span className="text-blue-600">Marathons Zone?</span>
         </motion.h2>
@@ -67,17 +67,21 @@ const WhyJoinSection = () => {
               custom={index}
               variants={cardVariants}
               viewport={{ once: true }}
-              className="group p-6 bg-white border rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              className="group relative p-6 rounded-3xl bg-white border border-transparent shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300 overflow-hidden"
             >
-              <img
-                src={card.icon}
-                alt={card.title}
-                className="w-full rounded-2xl h-40 mx-auto mb-5 transition-transform duration-300 group-hover:scale-110"
-              />
-              <h3 className="text-2xl font-semibold text-blue-700 mb-3">
-                {card.title}
-              </h3>
-              <p className="text-gray-600">{card.description}</p>
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/20 to-white opacity-10 rounded-3xl z-0"></div>
+
+              <div className="relative z-10">
+                <img
+                  src={card.icon}
+                  alt={card.title}
+                  className="w-full h-40 object-cover rounded-2xl mb-5 shadow-md group-hover:scale-105 transition duration-300"
+                />
+                <h3 className="text-xl font-bold text-blue-700 mb-2 group-hover:text-blue-900 transition">
+                  {card.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{card.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>

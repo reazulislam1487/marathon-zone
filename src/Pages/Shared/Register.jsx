@@ -236,9 +236,9 @@ const Register = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-base-200 min-h-screen overflow-x-hidden flex items-center justify-center">
       <div className="hero-content flex-col lg:flex-row-reverse gap-12 px-4 md:px-12">
-        <div className="text-center lg:text-left">
+        <div className="text-center w-full">
           <Lottie
             animationData={RegisterAnimation}
             style={{ width: "400px", maxWidth: "100%" }}
@@ -299,16 +299,16 @@ const Register = () => {
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
-                    <FaEyeSlash size={18} />
+                    <FaEyeSlash size={18} className="cursor-pointer" />
                   ) : (
-                    <FaEye size={18} />
+                    <FaEye size={18} className="cursor-pointer" />
                   )}
                 </button>
               </div>
 
               <div className="text-right">
                 <Link
-                  to="/login"
+                  to=""
                   className="link link-hover text-blue-600 hover:text-blue-800"
                 >
                   Forgot password?

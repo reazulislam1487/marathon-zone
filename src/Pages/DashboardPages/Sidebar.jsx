@@ -40,7 +40,7 @@ const Sidebar = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsOpen(false)} // close sidebar on mobile
-                className="flex items-center gap-3 p-3 rounded-lg bg-white shadow hover:bg-green-100 hover:scale-[1.02] transform transition duration-150"
+                className="flex items-center cursor-pointer gap-3 p-3 rounded-lg bg-white shadow hover:bg-green-100 hover:scale-[1.02] transform transition duration-150"
               >
                 <span className="text-xl">{item.icon}</span>
                 <span className="font-medium text-green-800">{item.label}</span>
