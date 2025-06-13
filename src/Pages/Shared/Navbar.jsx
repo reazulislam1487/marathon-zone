@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  // const avatarURL = user?.photoURL || userPic;
 
   const handleLogout = () => {
     Swal.fire({
@@ -88,7 +89,7 @@ const Navbar = () => {
   return (
     <nav className="navbar bg-gradient-to-b from-blue-100 via-white to-blue-50 shadow-md p-0 pr-2 md:px-6 md:py-3 sticky top-0 z-50">
       <div className="navbar-start flex items-center gap-4">
-        <div className="dropdown">
+        <div className="dropdown ">
           <label
             tabIndex={0}
             className="btn btn-ghost lg:hidden p-2 rounded-md hover:bg-blue-100 focus:bg-blue-100 focus:outline-none"
@@ -132,10 +133,10 @@ const Navbar = () => {
           <>
             <div className="relative group inline-block">
               <img
-                src={user.photoURL ? user.photoURL : userPic}
+                src={user?.photoURL ? user?.photoURL : userPic}
                 alt="User"
-                className="w-10 h-10 rounded-full cursor-pointer"
                 referrerPolicy="no-referrer"
+                className="w-10 h-10 rounded-full cursor-pointer"
               />
               <span className="absolute bg-black bg-opacity-80 text-white text-sm rounded px-3 py-1 top-1/2 right-full -translate-y-1/2 mr-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 whitespace-nowrap">
                 {user.displayName}

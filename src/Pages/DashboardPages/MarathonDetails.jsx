@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import axios from "axios";
@@ -49,7 +48,11 @@ const MarathonDetails = () => {
   const regStart = new Date(marathon.startRegDate);
   const regEnd = new Date(marathon.endRegDate);
   const today = new Date();
-  const isRegistrationOpen = today >= regStart && today <= regEnd;
+  const marathonStartDate = new Date(marathon.startDate);
+
+  const isRegistrationOpen =
+    // today >= regStart && today <= regEnd && marathonStartDate < today;
+    today >= regStart && today <= regEnd && today < marathonStartDate;
 
   const minuteSeconds = 60;
   const hourSeconds = 3600;
@@ -112,7 +115,7 @@ const MarathonDetails = () => {
             <p className="flex items-center gap-2 text-gray-700">
               <FaCalendarAlt className="text-blue-600" />
               <span className="font-semibold">Marathon Date:</span>{" "}
-              {new Date(marathon.startDate).toLocaleDateString()}
+              {marathonStartDate.toLocaleDateString()}
             </p>
 
             <p className="flex items-center gap-2 text-gray-700">

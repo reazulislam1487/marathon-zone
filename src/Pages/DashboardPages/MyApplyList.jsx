@@ -140,31 +140,40 @@ const MyApplyList = () => {
 
           <div className="min-w-full">
             <table className="w-full table-auto bg-white border border-gray-200 shadow-md rounded-lg text-sm">
-              <thead className="bg-blue-100 text-gray-700 uppercase text-sm">
+              <thead className="bg-blue-100 text-blue-800 uppercase text-sm font-semibold">
                 <tr>
-                  <th className="px-5 py-4 text-left">#</th>
+                  <th className="px-5 py-4 text-left">Image</th>
                   <th className="px-5 py-4 text-left">Title</th>
-                  <th className="px-5 py-4 text-left">Date</th>
                   <th className="px-5 py-4 text-left">Location</th>
+                  <th className="px-5 py-4 text-left">Date</th>
                   <th className="px-5 py-4 text-center">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredMarathons.map((marathon, index) => (
+                {filteredMarathons.map((marathon) => (
                   <tr
                     key={marathon._id}
                     className="border-t hover:bg-gray-50 transition duration-150"
                   >
-                    <td className="px-5 py-4">{index + 1}</td>
-                    <td className="px-5 py-4 font-medium text-gray-800">
+                    <td className="px-2 py-2">
+                      {" "}
+                      <img
+                        className="w-20 h-15 rounded"
+                        src={marathon.image}
+                        alt="My Photo"
+                      ></img>{" "}
+                    </td>
+                    <td className="px-5 py-3 text-[15px] font-medium text-gray-800">
                       {marathon.marathonTitle}
                     </td>
-                    <td className="px-5 py-4">
+                    <td className="px-5 text-[15px] py-4">
+                      {marathon.location}
+                    </td>
+                    <td className="px-5 py-4 text-[15px]">
                       {new Date(
                         marathon.marathonStartDate
                       ).toLocaleDateString()}
                     </td>
-                    <td className="px-5 py-4">{marathon.location}</td>
                     <td className="px-5 py-3 text-center space-x-5">
                       <button
                         onClick={() => openUpdateModal(marathon)}

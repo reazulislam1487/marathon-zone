@@ -6,6 +6,7 @@ import MarathonEvents from "./Marathonevents";
 import MarathonsSection from "./MarathonsSection";
 import WhyJoinSection from "./WhyJoinSection";
 import usePageTitle from "../../hooks/usePageTitle";
+import FAQSection from "./FAQSection";
 const Home = () => {
   usePageTitle("Home");
 
@@ -17,6 +18,7 @@ const Home = () => {
         <MarathonsSection></MarathonsSection>
 
         <MarathonEvents></MarathonEvents>
+        <FAQSection></FAQSection>
         <WhyJoinSection></WhyJoinSection>
       </div>
     </div>

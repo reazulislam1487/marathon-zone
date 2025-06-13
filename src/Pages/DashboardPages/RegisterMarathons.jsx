@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
@@ -42,6 +41,7 @@ const RegisterMarathons = () => {
       marathonTitle: marathon.title,
       marathonStartDate: marathon.startDate,
       location: marathon.location,
+      image: marathon.image,
       ...formData,
     };
 

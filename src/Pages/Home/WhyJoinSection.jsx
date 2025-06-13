@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -37,7 +38,7 @@ const WhyJoinSection = () => {
   ];
 
   return (
-    <section className="text-gray-800 px-4 py-20">
+    <section className="text-gray-800 px-4 py-20 bg-gradient-to-br from-white via-blue-50 to-white">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
@@ -67,20 +68,23 @@ const WhyJoinSection = () => {
               custom={index}
               variants={cardVariants}
               viewport={{ once: true }}
-              className="group relative p-6 rounded-3xl bg-white border border-transparent shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300 overflow-hidden"
+              className="group relative backdrop-blur-sm bg-white/80 border border-blue-100 shadow-lg hover:shadow-xl rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.03]"
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/20 to-white opacity-10 rounded-3xl z-0"></div>
+              {/* Decorative background effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-100/20 to-transparent opacity-20 z-0"></div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 p-6">
                 <img
                   src={card.icon}
                   alt={card.title}
-                  className="w-full h-40 object-cover rounded-2xl mb-5 shadow-md group-hover:scale-105 transition duration-300"
+                  className="w-full h-40 object-cover rounded-2xl mb-5 shadow-md group-hover:brightness-110 transition duration-300"
                 />
                 <h3 className="text-xl font-bold text-blue-700 mb-2 group-hover:text-blue-900 transition">
                   {card.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{card.description}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {card.description}
+                </p>
               </div>
             </motion.div>
           ))}

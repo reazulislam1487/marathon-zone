@@ -136,7 +136,7 @@ const MyMarathons = () => {
           <table className="w-full min-w-[640px] table-auto bg-white border border-gray-200 shadow-sm rounded-lg">
             <thead className="bg-blue-100 text-blue-800 uppercase text-sm font-semibold">
               <tr>
-                <th className="px-5 py-4 text-left">#</th>
+                <th className="px-5 py-4 text-left">Image</th>
                 <th className="px-5 py-4 text-left">Title</th>
                 <th className="px-5 py-4 text-left">Location</th>
                 <th className="px-5 py-4 text-left">Date</th>
@@ -144,12 +144,19 @@ const MyMarathons = () => {
               </tr>
             </thead>
             <tbody>
-              {marathons.map((marathon, index) => (
+              {marathons.map((marathon) => (
                 <tr
                   key={marathon._id}
                   className="border-t hover:bg-gray-50 transition duration-200"
                 >
-                  <td className="px-5 py-3">{index + 1}</td>
+                  <td className="px-2 py-2">
+                    {" "}
+                    <img
+                      className="w-20 h-15 rounded"
+                      src={marathon.image}
+                      alt="My Photo"
+                    ></img>{" "}
+                  </td>
                   <td className="px-5 py-3 font-medium text-gray-800">
                     {marathon.title}
                   </td>
