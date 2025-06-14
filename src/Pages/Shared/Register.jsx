@@ -222,7 +222,13 @@ const Register = () => {
             navigate(from);
           })
           .catch((error) => {
-            alert("Error updating user profile:", error.message);
+            Swal.fire({
+              title: "Error!",
+              text: error.message || "An error occurred while updating profile",
+              icon: "error",
+              confirmButtonColor: "#2563EB",
+              timer: 1500,
+            });
           });
       })
       .catch((error) => {
@@ -231,6 +237,7 @@ const Register = () => {
           text: error.message || "An error occurred",
           icon: "error",
           confirmButtonColor: "#2563EB",
+          timer: 1500,
         });
       });
   };

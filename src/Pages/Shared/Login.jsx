@@ -7,6 +7,7 @@ import RegisterAnimation from "../../assets/RegisterAnimation.json";
 import { AuthContext } from "../../Contexts/AuthContext";
 import SocialLogin from "../Home/SocialLogin";
 import usePageTitle from "../../hooks/usePageTitle";
+import Swal from "sweetalert2";
 
 const Login = () => {
   usePageTitle("Login");
@@ -25,10 +26,38 @@ const Login = () => {
       .then(() => {
         form.reset();
         navigate(from);
+        Swal.fire({
+          title: "Good job!",
+          text: "Login successful",
+          icon: "success",
+          timer: 1500,
+          confirmButtonText: "OK",
+        });
       })
       .catch((error) => {
-        console.error("Error logging in user:", error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text:
+            error.code === "auth/wrong-password"
+              ? "Wrong password"
+              : error.code === "auth/user-not-found"
+              ? "No account found with this email"
+              : "Something went wrong",
+          timer: 2000,
+          confirmButtonText: "OK",
+        });
       });
+
+    // .catch((error) => {
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Login Failed",
+    //     text: error.message,
+    //     timer: 1500,
+    //     confirmButtonText: "OK",
+    //   });
+    // });
   };
 
   return (

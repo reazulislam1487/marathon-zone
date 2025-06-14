@@ -28,6 +28,7 @@ const Navbar = () => {
               text: "You have been logged out successfully.",
               icon: "success",
               confirmButtonColor: "#2563EB",
+              timer: 1500,
             });
             navigate("/login");
           })

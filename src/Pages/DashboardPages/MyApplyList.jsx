@@ -355,11 +355,10 @@ const MyApplyList = () => {
   //   marathon.marathonTitle.toLowerCase().includes(searchText.toLowerCase())
   // );
 
-  
   // Fetch user's applied marathons
   useEffect(() => {
     if (user?.email) {
-      instance(`/my-applylist?email=${user.email}&search=${searchText}`)
+      instance(`/my-applylist?email=${user.email}&search=${searchText.trim()}`)
         .then((res) => {
           setMarathons(res.data);
           setLoading(false);
@@ -450,20 +449,25 @@ const MyApplyList = () => {
         My Registered Marathons
       </h2>
 
-      {marathons.length === 0 ? (
-        <p className="text-center text-gray-500">No marathons found.</p>
+      <div className="mb-6 mt-1 text-center">
+        <input
+          type="text"
+          placeholder="Search by Title Or Location..."
+          className="px-4 py-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-sm"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+      </div>
+      {loading ? (
+        <Loading />
+      ) : marathons.length === 0 ? (
+        <p className="text-center text-gray-500">
+          {searchText.trim()
+            ? "No marathons match your search."
+            : "You haven’t registered for any marathons yet."}
+        </p>
       ) : (
         <div className="w-full overflow-x-auto">
-          <div className="mb-6 mt-1 text-center">
-            <input
-              type="text"
-              placeholder="Search by Title..."
-              className="px-4 py-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-sm"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-          </div>
-
           <div className="min-w-full">
             <table className="w-full table-auto bg-white border border-gray-200 shadow-md rounded-lg text-sm">
               <thead className="bg-blue-100 text-blue-800 uppercase text-sm font-semibold">
@@ -482,12 +486,11 @@ const MyApplyList = () => {
                     className="border-t hover:bg-gray-50 transition duration-150"
                   >
                     <td className="px-2 py-2">
-                      {" "}
                       <img
                         className="w-20 h-15 rounded"
                         src={marathon.image}
                         alt="My Photo"
-                      ></img>{" "}
+                      />
                     </td>
                     <td className="px-5 py-3 text-[15px] font-medium text-gray-800">
                       {marathon.marathonTitle}

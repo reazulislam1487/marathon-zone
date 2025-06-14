@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const SocialLogin = () => {
   const { signInWithGoogle } = useContext(AuthContext);
-   const location = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
   const from = location.state || "/";
   // const from = location.state?.from?.pathname || "/";
@@ -16,6 +16,7 @@ const SocialLogin = () => {
           title: "Good job!",
           text: "Login successful",
           icon: "success",
+          timer: 1500,
         });
         navigate(from);
       })
@@ -24,6 +25,7 @@ const SocialLogin = () => {
           title: "Login Failed!",
           text: error.message || "An error occurred",
           icon: "error",
+          timer: 1500,
         });
       });
   };
