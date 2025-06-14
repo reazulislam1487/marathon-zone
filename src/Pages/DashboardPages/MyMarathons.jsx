@@ -19,18 +19,7 @@ const MyMarathons = () => {
 
   useEffect(() => {
     if (user.email) {
-      instance(
-        `/marathons?email=${user.email}`,
-        {
-          headers: {
-            authorization: `Bearer ${user?.accessToken}`,
-            "Content-Type": "application/json",
-          },
-        },
-        {
-          params: { email: user.email },
-        }
-      )
+      instance(`/marathons?email=${user.email}`)
         .then((res) => {
           setMarathons(res.data);
           setLoading(false);

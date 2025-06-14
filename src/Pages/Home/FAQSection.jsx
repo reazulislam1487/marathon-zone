@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import runnerImage from "/runner.png"; // Make sure this path is correct
+import runnerImage from "/runner.png"; 
 
 const faqs = [
   {

@@ -4,13 +4,13 @@ import { Link } from "react-router";
 
 import Loading from "../Shared/Loading";
 import usePageTitle from "../../hooks/usePageTitle";
-import useAuth from "../../hooks/useAuth";
+// import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AllMarathons = () => {
   usePageTitle("All Marathons");
 
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   const [marathons, setMarathons] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,9 +19,7 @@ const AllMarathons = () => {
 
   useEffect(() => {
     setLoading(true);
-    instance(`/marathons?sort=${sortOrder}`, {
-      params: { email: user.email },
-    })
+    instance(`/marathons?sort=${sortOrder}`)
       .then((res) => {
         setMarathons(res.data);
         setLoading(false);
@@ -30,7 +28,7 @@ const AllMarathons = () => {
         console.error("Failed to fetch marathons:", err);
         setLoading(false);
       });
-  }, [sortOrder, user?.accessToken, user.email, instance]); // Re-fetch when sortOrder or accessToken changes
+  }, [sortOrder, instance]);
 
   if (loading) return <Loading />;
 

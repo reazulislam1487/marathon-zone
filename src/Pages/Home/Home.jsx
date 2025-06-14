@@ -11,7 +11,7 @@ const Home = () => {
   usePageTitle("Home");
 
   return (
-    <div>
+    <main>
       <SliderPage></SliderPage>
       <div className="max-w-screen-xl mx-auto">
         <Banner></Banner>
@@ -20,7 +20,7 @@ const Home = () => {
         <FAQSection></FAQSection>
         <WhyJoinSection></WhyJoinSection>
       </div>
-    </div>
+    </main>
   );
 };
 
