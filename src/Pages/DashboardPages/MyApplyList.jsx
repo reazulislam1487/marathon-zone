@@ -350,9 +350,12 @@ const MyApplyList = () => {
   const [selectedRegistration, setSelectedRegistration] = useState(null);
   const instance = useAxiosSecure();
 
-  const filteredMarathons = marathons.filter((marathon) =>
-    marathon.marathonTitle.toLowerCase().includes(searchText.toLowerCase())
-  );
+  // using searchText to filter marathons
+  // const filteredMarathons = marathons.filter((marathon) =>
+  //   marathon.marathonTitle.toLowerCase().includes(searchText.toLowerCase())
+  // );
+
+  
   // Fetch user's applied marathons
   useEffect(() => {
     if (user?.email) {
@@ -473,7 +476,7 @@ const MyApplyList = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredMarathons.map((marathon) => (
+                {marathons.map((marathon) => (
                   <tr
                     key={marathon._id}
                     className="border-t hover:bg-gray-50 transition duration-150"
