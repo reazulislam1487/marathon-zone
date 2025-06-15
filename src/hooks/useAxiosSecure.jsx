@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://marathon-server-side-five.vercel.app",
 });
 
 const useAxiosSecure = () => {

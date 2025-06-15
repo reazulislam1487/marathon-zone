@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import userPic from "/userPic.png";
+import React, { useContext, useEffect, useState } from "react";
 
 import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Contexts/AuthContext";
@@ -8,7 +7,12 @@ import Swal from "sweetalert2";
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  // const avatarURL = user?.photoURL || userPic;
+  const userPic = "https://www.w3schools.com/howto/img_avatar.png"; // Default user picture
+  const [imgSrc, setImgSrc] = useState(user?.photoURL || userPic);
+  useEffect(() => {
+    // Reset when user changes
+    setImgSrc(user?.photoURL || userPic);
+  }, [user]);
 
   const handleLogout = () => {
     Swal.fire({
@@ -133,11 +137,22 @@ const Navbar = () => {
         {user ? (
           <>
             <div className="relative group inline-block">
-              <img
+              {/* <img
                 src={user?.photoURL ? user?.photoURL : userPic}
                 alt="User"
                 referrerPolicy="no-referrer"
                 className="w-10 h-10 rounded-full cursor-pointer"
+              /> */}
+              <img
+                src={imgSrc}
+                alt="User"
+                referrerPolicy="no-referrer"
+                className="w-10 h-10 rounded-full cursor-pointer"
+                onError={() => {
+                  if (imgSrc !== userPic) {
+                    setImgSrc(userPic); // fallback only if it's not already fallback
+                  }
+                }}
               />
               <span className="absolute bg-black bg-opacity-80 text-white text-sm rounded px-3 py-1 top-1/2 right-full -translate-y-1/2 mr-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 whitespace-nowrap">
                 {user.displayName}
@@ -152,12 +167,20 @@ const Navbar = () => {
             </button>
           </>
         ) : (
-          <NavLink
-            to="/login"
-            className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white transition"
-          >
-            Login
-          </NavLink>
+          <>
+            <NavLink
+              to="/login"
+              className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white transition"
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/register"
+              className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white transition"
+            >
+              Register
+            </NavLink>
+          </>
         )}
       </div>
     </nav>

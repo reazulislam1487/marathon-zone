@@ -8,7 +8,7 @@ const MarathonsSection = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/all-marathons")
+      .get("https://marathon-server-side-five.vercel.app/all-marathons")
       .then((res) => {
         setMarathons(res.data);
         setLoading(false);

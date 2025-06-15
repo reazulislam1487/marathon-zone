@@ -78,6 +78,7 @@ const AddMarathon = () => {
             </label>
             <DatePicker
               selected={startRegDate}
+              placeholderText="mm/dd/yyyy"
               onChange={(date) => setStartRegDate(date)}
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
@@ -89,6 +90,7 @@ const AddMarathon = () => {
             </label>
             <DatePicker
               selected={endRegDate}
+              placeholderText="mm/dd/yyyy"
               onChange={(date) => setEndRegDate(date)}
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
@@ -100,6 +102,7 @@ const AddMarathon = () => {
             </label>
             <DatePicker
               selected={startDate}
+              placeholderText="mm/dd/yyyy"
               onChange={(date) => setStartDate(date)}
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
