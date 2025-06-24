@@ -1,8 +1,7 @@
 # 🏃 Marathon Zone
 
-![Marathon Zone Screenshot](https://marathonzonebyreaz.netlify.app)
+![Marathon Zone Screenshot](https://i.postimg.cc/C5Z4Qr9p/Screenshot-2025-06-25-053132.png)
 
-<!-- Replace this with your actual project screenshot -->
 
 ---
 
