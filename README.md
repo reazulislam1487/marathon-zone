@@ -1,6 +1,6 @@
 # 🏃 Marathon Zone
 
-![Marathon Zone Screenshot](https://i.postimg.cc/C5Z4Qr9p/Screenshot-2025-06-25-053132.png)
+![Marathon Zone Screenshot](https://i.postimg.cc/CMZttcGK/Screenshot-2025-06-25-053132.png)
 
 
 ---
