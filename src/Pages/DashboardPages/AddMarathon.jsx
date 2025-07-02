@@ -58,7 +58,7 @@ const AddMarathon = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg mt-10">
+    <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
       <h2 className="text-3xl text-center font-bold mb-6 text-blue-700">
         Add New Marathon
       </h2>
