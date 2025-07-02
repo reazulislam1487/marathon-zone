@@ -125,11 +125,4 @@ JWT_SECRET=your_jwt_secret
 
 ---
 
-### ✅ Submission Checklist
 
-* ✅ 18+ commits on client
-* ✅ 8+ commits on server
-* ✅ Live site + GitHub repos submitted
-* ✅ All required & optional features completed
-
----

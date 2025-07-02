@@ -202,10 +202,10 @@ const SliderPage = () => {
   };
 
   return (
-    <Slider className="mb-20 overflow-hidden" {...settings}>
+    <Slider className="mb-3 overflow-hidden" {...settings}>
       {slides.map((slide, index) => (
         <div key={index}>
-          <div className="relative w-full h-[calc(100vh-5rem)]">
+          <div className="relative w-full h-[calc(100vh-12rem)]">
             <img
               src={slide.img}
               alt={`Slide ${index + 1}`}

@@ -8,13 +8,12 @@ const RootLayout = () => {
   return (
     <>
       <ScrollToTop></ScrollToTop>
-      <nav>
-        <Navbar></Navbar>
-      </nav>
+
+      <Navbar></Navbar>
+
       <Outlet></Outlet>
-      <footer>
-        <Footer></Footer>
-      </footer>
+
+      <Footer></Footer>
     </>
   );
 };

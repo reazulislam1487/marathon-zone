@@ -12,6 +12,9 @@ import MarathonDetails from "../Pages/DashboardPages/MarathonDetails";
 import RegisterMarathons from "../Pages/DashboardPages/RegisterMarathons";
 import MyMarathons from "../Pages/DashboardPages/MyMarathons";
 import NotFound from "../Pages/Shared/NotFound";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import ContactUs from "../Pages/ContactUs/ContactUs";
+import BlogSection from "../Pages/BlogSection/BlogSection";
 
 const router = createBrowserRouter([
   {
@@ -31,12 +34,20 @@ const router = createBrowserRouter([
         Component: Login,
       },
       {
+        path: "/blog",
+        Component: BlogSection,
+      },
+      {
+        path: "/about-us",
+        Component: AboutUs,
+      },
+      {
+        path: "/contact-us",
+        Component: ContactUs,
+      },
+      {
         path: "/marathons",
-        element: (
-          <PrivateRoute>
-            <AllMarathons></AllMarathons>
-          </PrivateRoute>
-        ),
+        element: <AllMarathons></AllMarathons>,
       },
       {
         path: "/marathons/my-marathons/:id",

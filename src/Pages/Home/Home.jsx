@@ -14,8 +14,8 @@ const Home = () => {
     <main>
       <SliderPage></SliderPage>
       <div className="max-w-screen-xl mx-auto">
-        <Banner></Banner>
         <MarathonsSection></MarathonsSection>
+        <Banner></Banner>
         <MarathonEvents></MarathonEvents>
         <FAQSection></FAQSection>
         <WhyJoinSection></WhyJoinSection>

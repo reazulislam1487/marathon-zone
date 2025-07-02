@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const Banner = () => {
   return (
-    <div className="hero bg-blue-50 min-h-[24rem] sm:min-h-[28rem] md:min-h-[32rem] lg:min-h-[36rem] px-4 sm:px-8">
+    <div className="hero bg-blue-50 lg:mt-10 min-h-[24rem] sm:min-h-[28rem] md:min-h-[32rem] lg:min-h-[32rem] px-4 ">
       <div className="hero-content flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 max-w-7xl mx-auto">
         <div className="flex-1 hidden md:flex flex-col space-y-6 sm:space-y-8 items-center lg:items-start">
           <motion.img

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -39,7 +38,7 @@ const WhyJoinSection = () => {
 
   return (
     <section className="text-gray-800 px-4 py-20 bg-gradient-to-br from-white via-blue-50 to-white">
-      <div className="max-w-6xl mx-auto text-center">
+      <div className=" text-center">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}

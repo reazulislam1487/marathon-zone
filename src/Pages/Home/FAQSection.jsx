@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import runnerImage from "/runner.png"; 
+import runnerImage from "/runner.png";
 
 const faqs = [
   {
@@ -42,7 +42,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 px-6 py-16 bg-white">
+    <section className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 px-4 py-16 bg-white">
       {/* Left - Image with gradient & quote */}
       <div className="flex-1 relative w-full h-[450px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl group">
         {/* Background Image */}

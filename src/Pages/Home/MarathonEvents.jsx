@@ -73,7 +73,7 @@ const cardVariants = {
 
 const MarathonEvents = () => {
   return (
-    <section className="py-20 px-4 md:px-12 bg-gradient-to-b from-white to-blue-50 text-gray-800">
+    <section className="py-20 px-4 bg-gradient-to-b from-white to-blue-50 text-gray-800">
       {/* Section Title */}
       <div className="flex items-center justify-center mb-14 gap-4">
         <FaRunning className="text-blue-600 hidden md:block text-4xl animate-bounce" />
@@ -88,7 +88,7 @@ const MarathonEvents = () => {
       </div>
 
       {/* Event Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {marathonEvents.map((event, index) => (
           <motion.div
             key={event.id}
