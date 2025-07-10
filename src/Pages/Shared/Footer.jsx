@@ -55,7 +55,7 @@ const Footer = () => {
           </h4>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link to="#" className="hover:text-blue-500 transition">
+              <Link to="about-us" className="hover:text-blue-500 transition">
                 About Us
               </Link>
             </li>
@@ -70,7 +70,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="#" className="hover:text-blue-500 transition">
+              <Link to="contact-us" className="hover:text-blue-500 transition">
                 Contact
               </Link>
             </li>
