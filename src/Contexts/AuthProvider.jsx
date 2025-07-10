@@ -21,7 +21,6 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const updateUser = (userInfos) => {
-    console.log(userInfos);
     setLoading(true);
     return updateProfile(auth.currentUser, userInfos);
   };

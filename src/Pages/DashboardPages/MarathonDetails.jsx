@@ -35,7 +35,6 @@ const MarathonDetails = () => {
         setLoading(false);
       });
   }, [id, instance]);
-  // console.log(id);
 
   if (loading) return <Loading />;
 

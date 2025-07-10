@@ -69,7 +69,6 @@ const MyMarathons = () => {
   };
 
   const handleDelete = async (id) => {
-    console.log(id);
 
     Swal.fire({
       title: "Are you sure?",

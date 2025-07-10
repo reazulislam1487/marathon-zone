@@ -189,17 +189,6 @@ const Register = () => {
                 </Link>
               </p>
             </form>
-
-            {/* <div className="divider">OR</div>
-
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onHoverStart={() => console.log("hover started!")}
-              className="mt-4 text-center"
-            >
-              <SocialLogin />
-            </motion.div> */}
           </div>
         </div>
       </div>
