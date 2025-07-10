@@ -72,7 +72,7 @@ const AllMarathons = () => {
       </motion.div>
 
       {/* Marathon Grid */}
-      <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {marathons.map((marathon, index) => (
           <motion.div
             key={marathon._id}
