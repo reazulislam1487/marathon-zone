@@ -71,7 +71,7 @@ const Footer = () => {
             </li>
             <li>
               <Link to="contact-us" className="hover:text-blue-500 transition">
-                Contact
+                Contact Us
               </Link>
             </li>
           </ul>
