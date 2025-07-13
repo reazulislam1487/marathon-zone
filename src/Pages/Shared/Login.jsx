@@ -1,4 +1,3 @@
-
 import Lottie from "lottie-react";
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
