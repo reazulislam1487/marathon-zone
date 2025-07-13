@@ -189,7 +189,6 @@ const Register = () => {
                 </Link>
               </p>
             </form>
-          </div>
             {/* Divider */}
             <div className="divider">OR</div>
 
