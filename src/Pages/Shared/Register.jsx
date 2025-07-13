@@ -190,6 +190,18 @@ const Register = () => {
               </p>
             </form>
           </div>
+            {/* Divider */}
+            <div className="divider">OR</div>
+
+            {/* Social Login */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className=" text-center"
+            >
+              <SocialLogin from={from} />
+            </motion.div>
+          </div>
         </div>
       </div>
     </div>
