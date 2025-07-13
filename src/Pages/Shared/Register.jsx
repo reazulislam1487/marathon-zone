@@ -94,7 +94,7 @@ const Register = () => {
           />
         </div>
         <div className="card bg-white w-full max-w-sm  shrink-0 shadow-xl rounded-lg">
-          <div className="card-body px-4 md:px-6 py-10">
+          <div className="card-body px-4 mx-auto py-10">
             <form onSubmit={handleRegister} className="space-y-5">
               <h1 className="text-4xl font-extrabold text-transparent bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text mb-4 text-center">
                 Register now
