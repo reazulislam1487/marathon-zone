@@ -67,62 +67,64 @@ const ContactUs = () => {
           </div>
 
           {/* Contact Form */}
-          <motion.form
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8 }}
-            className="bg-white border border-blue-300 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow space-y-5"
-            onSubmit={(e) => {
-              e.preventDefault();
-              // handle form submission
-            }}
-          >
-            <div>
-              <label className="block text-textPrimary font-medium mb-1">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                required
-                className="w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                placeholder="Your Name"
-              />
-            </div>
-
-            <div>
-              <label className="block text-textPrimary font-medium mb-1">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                required
-                className="w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                placeholder="you@example.com"
-              />
-            </div>
-
-            <div>
-              <label className="block text-textPrimary font-medium mb-1">
-                Message
-              </label>
-              <textarea
-                name="message"
-                rows="5"
-                required
-                className="w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                placeholder="How can we help you?"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full py-3 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition"
+          <div className="bg-white border border-blue-300 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow space-y-5">
+            <motion.form
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8 }}
+              className=""
+              onSubmit={(e) => {
+                e.preventDefault();
+                // handle form submission
+              }}
             >
-              Send Message
-            </button>
-          </motion.form>
+              <div>
+                <label className="block text-textPrimary font-medium mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  className="w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  placeholder="Your Name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-textPrimary font-medium mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  className="w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  placeholder="you@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-textPrimary font-medium mb-1">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  rows="5"
+                  required
+                  className="w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  placeholder="How can we help you?"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition"
+              >
+                Send Message
+              </button>
+            </motion.form>
+          </div>
         </div>
       </motion.div>
     </section>
