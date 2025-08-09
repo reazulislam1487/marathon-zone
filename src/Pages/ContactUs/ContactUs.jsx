@@ -67,12 +67,14 @@ const ContactUs = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white border border-blue-300 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow space-y-5">
-            <motion.form
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8 }}
-              className=""
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.8 }}
+            className="bg-white border border-blue-300 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow "
+          >
+            <form
+              className="space-y-5"
               onSubmit={(e) => {
                 e.preventDefault();
                 // handle form submission
@@ -123,8 +125,8 @@ const ContactUs = () => {
               >
                 Send Message
               </button>
-            </motion.form>
-          </div>
+            </form>
+          </motion.div>
         </div>
       </motion.div>
     </section>
