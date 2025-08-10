@@ -3,132 +3,126 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const ContactUs = () => {
   return (
-    <section className="relative overflow-hidden  py-20 px-4 ">
-      {/* Decorative SVG wave at top */}
-      <div className="absolute -top-24 left-0 w-full">
-        <svg
-          viewBox="0 0 1440 320"
-          className="w-full h-40 opacity-20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill="#FFFFFF"
-            d="M0,256L48,234.7C96,213,192,171,288,144C384,117,480,107,576,128C672,149,768,203,864,229.3C960,256,1056,256,1152,224C1248,192,1344,128,1392,96L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0,480,0,384,0,288,0,192,0,96,0,48,0L0,0Z"
-          />
-        </svg>
+    <section className="relative overflow-hidden py-20 px-4 ">
+      {/* Floating gradient orbs */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <motion.div
+          initial={{ y: -50 }}
+          animate={{ y: 50 }}
+          transition={{ duration: 6, repeat: Infinity, repeatType: "reverse" }}
+          className="absolute -top-32 -left-32 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+        ></motion.div>
+        <motion.div
+          initial={{ y: 50 }}
+          animate={{ y: -50 }}
+          transition={{ duration: 8, repeat: Infinity, repeatType: "reverse" }}
+          className="absolute top-64 -right-32 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+        ></motion.div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-7xl mx-auto"
-      >
-        <h2 className="text-5xl md:text-6xl font-extrabold text-blue-600 text-center mb-8">
-          Get in Touch
-        </h2>
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Left Side - Illustration & Heading */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center lg:text-left space-y-6"
+        >
+          <h2 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent leading-tight">
+            Let’s Talk <br />
+            <span className="text-gray-800">About Your Next Run</span>
+          </h2>
+          <p className="text-gray-600 text-lg max-w-lg">
+            Have questions, ideas, or need assistance? We’re always ready to
+            help. Send us a message and we’ll get back to you in no time.
+          </p>
+          <div className="hidden lg:block">
+            <img
+              src="https://c8.alamy.com/comp/2BRCC01/flat-style-marathon-banner-design-with-energetic-runner-on-blue-background-2BRCC01.jpg"
+              alt="Contact Illustration"
+              className="w-96"
+            />
+          </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Contact Info */}
-          <div className="space-y-6">
+        {/* Right Side - Contact Card */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative backdrop-blur-xl bg-white/80 p-8 rounded-3xl shadow-xl border border-white/40"
+        >
+          {/* Contact Info Row */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
             {[
-              {
-                icon: <FaMapMarkerAlt className="text-blue-600 text-3xl" />,
-                label: "Address",
-                value: "123 Marathon St., RunCity",
-              },
-              {
-                icon: <FaPhoneAlt className="text-blue-600 text-3xl" />,
-                label: "Phone",
-                value: "+1 (234) 567-8901",
-              },
-              {
-                icon: <FaEnvelope className="text-blue-600 text-3xl" />,
-                label: "Email",
-                value: "support@marathonzone.com",
-              },
+              { icon: <FaMapMarkerAlt />, label: "123 Marathon St., RunCity" },
+              { icon: <FaPhoneAlt />, label: "+1 (234) 567-8901" },
+              { icon: <FaEnvelope />, label: "support@marathonzone.com" },
             ].map((item, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 + i * 0.2 }}
-                className="bg-white border border-blue-300 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                className="flex flex-col items-center text-center bg-blue-50 rounded-xl p-4 shadow-sm hover:shadow-md transition"
               >
-                <div className="flex items-center mb-4 space-x-4">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-blue-600 text-xl mb-2">
                   {item.icon}
-                  <h3 className="text-2xl font-semibold text-blue-600">
-                    {item.label}
-                  </h3>
                 </div>
-                <p className="text-textPrimary">{item.value}</p>
-              </motion.div>
+                <p className="text-gray-700 text-sm">{item.label}</p>
+              </div>
             ))}
           </div>
 
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8 }}
-            className="bg-white border border-blue-300 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow "
+          <form
+            className="space-y-5"
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
           >
-            <form
-              className="space-y-5"
-              onSubmit={(e) => {
-                e.preventDefault();
-                // handle form submission
-              }}
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">
+                Name
+              </label>
+              <input
+                type="text"
+                required
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Your Name"
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                required
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">
+                Message
+              </label>
+              <textarea
+                rows="4"
+                required
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="How can we help you?"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 cursor-pointer bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold rounded-lg shadow-lg transition-all"
             >
-              <div>
-                <label className="block text-textPrimary font-medium mb-1">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  className="w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="Your Name"
-                />
-              </div>
-
-              <div>
-                <label className="block text-textPrimary font-medium mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="you@example.com"
-                />
-              </div>
-
-              <div>
-                <label className="block text-textPrimary font-medium mb-1">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  rows="5"
-                  required
-                  className="w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="How can we help you?"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-3 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition"
-              >
-                Send Message
-              </button>
-            </form>
-          </motion.div>
-        </div>
-      </motion.div>
+              Send Message
+            </button>
+          </form>
+        </motion.div>
+      </div>
     </section>
   );
 };
