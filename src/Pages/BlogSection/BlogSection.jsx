@@ -30,7 +30,7 @@ const blogPosts = [
 ];
 
 const BlogSection = () => (
-  <section className="py-20 px-4 bg-gray-50">
+  <section className="py-20 px-4 ">
     {/* Section Heading */}
     <motion.div
       initial={{ opacity: 0, y: 30 }}

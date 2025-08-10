@@ -2,10 +2,28 @@ import { motion } from "framer-motion";
 import { FaBullseye, FaLink, FaRocket } from "react-icons/fa";
 
 const AboutUs = () => {
+  const features = [
+    {
+      icon: <FaBullseye />,
+      title: "Our Mission",
+      text: "Inspire active living and community participation by streamlining the marathon experience.",
+    },
+    {
+      icon: <FaLink />,
+      title: "Why Choose Us?",
+      text: "Secure, user-friendly dashboard with real-time updates and easy registration tracking.",
+    },
+    {
+      icon: <FaRocket />,
+      title: "What We Offer",
+      text: "Full event visibility, countdown timers, filtering options, and seamless registration.",
+    },
+  ];
+
   return (
-    <section className="relative overflow-hidden py-20 px-4">
+    <section className="relative overflow-hidden py-20 px-4  ">
       {/* Decorative SVG wave */}
-      <div className="absolute -top-24 left-0 w-full">
+      <div className="absolute -top-24 left-0 w-full pointer-events-none">
         <svg
           viewBox="0 0 1440 320"
           className="w-full h-40 opacity-20"
@@ -22,49 +40,43 @@ const AboutUs = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-7xl mx-auto text-center"
+        className="relative z-10 max-w-6xl mx-auto text-center"
       >
-        <h2 className="text-5xl md:text-6xl font-extrabold text-blue-600 mb-6">
+        {/* Section Heading */}
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center text-blue-700 mb-6">
           About Marathon Zone
         </h2>
-        <p className="text-lg md:text-xl text-textPrimary max-w-3xl mx-auto leading-relaxed mb-12">
-          <strong className="text-textPrimary">Marathon Zone</strong> is a
-          dynamic platform that bridges the gap between marathon organizers and
-          enthusiastic runners. We simplify event management and make it easier
-          than ever for participants to discover, register, and join marathons
-          across the country.
+        <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-16">
+          <strong className="text-gray-900">Marathon Zone</strong> bridges the
+          gap between marathon organizers and runners. We make event management
+          simple and registration effortless.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              icon: <FaBullseye className="text-blue-600 text-4xl mb-4" />,
-              title: "Our Mission",
-              text: "Inspire active living and community participation by streamlining the marathon experience.",
-            },
-            {
-              icon: <FaLink className="text-blue-600 text-4xl mb-4" />,
-              title: "Why Choose Us?",
-              text: "Secure, user-friendly dashboard with real-time updates and easy registration tracking.",
-            },
-            {
-              icon: <FaRocket className="text-blue-600 text-4xl mb-4" />,
-              title: "What We Offer",
-              text: "Full event visibility, countdown timers, filtering options, and seamless registration.",
-            },
-          ].map((card, i) => (
+        {/* Vertical Timeline Layout */}
+        <div className="relative border-l-4 border-blue-200 pl-6 md:pl-12 space-y-12">
+          {features.map((card, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 + i * 0.2, duration: 0.5 }}
-              className="bg-background p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.2 }}
+              className="relative flex items-center gap-6 bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              {card.icon}
-              <h3 className="text-2xl font-semibold text-textPrimary mb-2">
-                {card.title}
-              </h3>
-              <p className="text-textSecondary">{card.text}</p>
+              {/* Timeline Dot */}
+              <span className="absolute -left-[38px] md:-left-[46px] w-8 h-8 rounded-full bg-blue-500 border-4 border-white shadow-md"></span>
+
+              {/* Icon */}
+              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-blue-100 text-blue-600 text-2xl flex-shrink-0 shadow-sm">
+                {card.icon}
+              </div>
+
+              {/* Text Content */}
+              <div className="text-left">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  {card.title}
+                </h3>
+                <p className="text-gray-600">{card.text}</p>
+              </div>
             </motion.div>
           ))}
         </div>
