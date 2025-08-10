@@ -3,7 +3,7 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const ContactUs = () => {
   return (
-    <section className="relative overflow-hidden bg-blue-50 py-20 px-4 ">
+    <section className="relative overflow-hidden  py-20 px-4 ">
       {/* Decorative SVG wave at top */}
       <div className="absolute -top-24 left-0 w-full">
         <svg

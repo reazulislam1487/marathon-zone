@@ -129,7 +129,7 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50  bg-gradient-to-b from-blue-100 via-white to-blue-50  ">
-      <nav className="navbar p-0 pr-2  md:py-5 max-w-7xl mx-auto ">
+      <nav className="navbar p-0 pr-2  md:py-3 max-w-7xl mx-auto ">
         <div className="navbar-start flex items-center gap-4">
           <div className="dropdown ">
             <label

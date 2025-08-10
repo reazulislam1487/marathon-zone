@@ -3,7 +3,7 @@ import { FaBullseye, FaLink, FaRocket } from "react-icons/fa";
 
 const AboutUs = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-white py-20 px-4">
+    <section className="relative overflow-hidden py-20 px-4">
       {/* Decorative SVG wave */}
       <div className="absolute -top-24 left-0 w-full">
         <svg
@@ -28,10 +28,11 @@ const AboutUs = () => {
           About Marathon Zone
         </h2>
         <p className="text-lg md:text-xl text-textPrimary max-w-3xl mx-auto leading-relaxed mb-12">
-          <strong className="text-textPrimary">Marathon Zone</strong> is a dynamic platform that
-          bridges the gap between marathon organizers and enthusiastic runners. We simplify
-          event management and make it easier than ever for participants to discover, register,
-          and join marathons across the country.
+          <strong className="text-textPrimary">Marathon Zone</strong> is a
+          dynamic platform that bridges the gap between marathon organizers and
+          enthusiastic runners. We simplify event management and make it easier
+          than ever for participants to discover, register, and join marathons
+          across the country.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

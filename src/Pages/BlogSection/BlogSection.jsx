@@ -30,7 +30,7 @@ const blogPosts = [
 ];
 
 const BlogSection = () => (
-  <section className="py-20 px-4 bg-blue-50">
+  <section className="py-20 px-4 ">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
