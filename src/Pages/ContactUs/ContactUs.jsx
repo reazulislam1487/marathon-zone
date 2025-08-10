@@ -20,7 +20,7 @@ const ContactUs = () => {
         ></motion.div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-0 items-center">
         {/* Left Side - Illustration & Heading */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -28,7 +28,7 @@ const ContactUs = () => {
           transition={{ duration: 0.8 }}
           className="text-center lg:text-left space-y-6"
         >
-          <h2 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent leading-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent leading-tight">
             Let’s Talk <br />
             <span className="text-gray-800">About Your Next Run</span>
           </h2>
@@ -53,7 +53,7 @@ const ContactUs = () => {
           className="relative backdrop-blur-xl bg-white/80 p-8 rounded-3xl shadow-xl border border-white/40"
         >
           {/* Contact Info Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-8">
             {[
               { icon: <FaMapMarkerAlt />, label: "123 Marathon St., RunCity" },
               { icon: <FaPhoneAlt />, label: "+1 (234) 567-8901" },
